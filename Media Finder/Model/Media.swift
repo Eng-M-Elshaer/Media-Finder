@@ -10,11 +10,11 @@ import Foundation
 
 struct Media: Codable {
     
-    var artistName:String?
-    var trackName:String?
-    var artworkUrl:String!
-    var longDescription:String?
-    var previewUrl:String!
+    var artistName: String?
+    var trackName: String?
+    var artworkUrl: String!
+    var longDescription: String?
+    var previewUrl: String!
     
     enum CodingKeys: String, CodingKey {
         case artistName

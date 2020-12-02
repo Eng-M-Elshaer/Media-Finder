@@ -13,14 +13,12 @@ import SDWebImage
 class MediaListVC: UIViewController {
 
     // MARK: - Outlets.
-
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mediaSegment: UISegmentedControl!
     @IBOutlet weak var noDataImageView: UIImageView!
     
     // MARK: - Variables.
-
     fileprivate var cellIdentifier = "MediaCell"
     var mediaArr = [Media]()
     var mediaType: MediaType = .all
@@ -28,8 +26,7 @@ class MediaListVC: UIViewController {
     let email = UserDefultsManger.shared().email
     var image:UIView!
 
-    // MARK: - LifeCycle Functions.
-
+    // MARK: - LifeCycle Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefultsManger.shared().isLogedIn = true
@@ -37,14 +34,78 @@ class MediaListVC: UIViewController {
         SQLiteManger.shared().createMediaTable()
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.setHidesBackButton(true, animated: true)
         setupView()
     }
     
-    // MARK: - VC Functions.
-    
+    // MARK: - Actions.
+    @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
+       let index = sender.selectedSegmentIndex
+        switch index {
+        case 1:
+            self.mediaType = .tvShow
+        case 2:
+            self.mediaType = .music
+        case 3:
+            self.mediaType = .movie
+        default:
+            self.mediaType = .all
+        }
+        
+        guard let searchText = searchBar.text, searchText != "" else {
+            return
+        }
+        bindData(term: searchText, media: mediaType.rawValue)
+    }
+}
+
+// MARK: - TableView DataSource Extension.
+extension MediaListVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if mediaArr.count == 0 {
+            self.noDataImageView.isHidden = false
+            return 0
+        }
+        self.noDataImageView.isHidden = true
+        return mediaArr.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MediaCell else {return UITableViewCell()}
+        cell.configCell(type: mediaType, media: mediaArr[indexPath.row])
+        return cell
+    }
+}
+
+// MARK: - TableView Delegate Extension.
+extension MediaListVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let url = mediaArr[indexPath.row].previewUrl {
+            if let artworkUrl = mediaArr[indexPath.row].artworkUrl {
+                privewUrl(url: url, artworkUrl: artworkUrl)
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let theCell = cell as! MediaCell
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+        theCell.artWorkImageView.layer.transform = rotationTransform
+        UIView.animate(withDuration: 0.7) {
+            theCell.artWorkImageView.layer.transform = CATransform3DIdentity
+        }
+    }
+}
+
+// MARK: - Search Bar Delegate Extension.
+extension MediaListVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        bindData(term: searchText, media: mediaType.rawValue)
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Private Methods.
+extension MediaListVC {
     private func setupView(){
         setNavView()
         setTableRowHight()
@@ -127,83 +188,5 @@ class MediaListVC: UIViewController {
         present(vc, animated: true) {
             vc.player?.play()
         }
-    }
-    
-    // MARK: - Button Functions.
-
-    @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
-       let index = sender.selectedSegmentIndex
-        switch index {
-        case 1:
-            self.mediaType = .tvShow
-        case 2:
-            self.mediaType = .music
-        case 3:
-            self.mediaType = .movie
-        default:
-            self.mediaType = .all
-        }
-        
-        guard let searchText = searchBar.text, searchText != "" else {
-            return
-        }
-        
-        bindData(term: searchText, media: mediaType.rawValue)
-
-    }
-    
-}
-
-// MARK: - TableView DataSource Extension.
-
-extension MediaListVC: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if mediaArr.count == 0 {
-            self.noDataImageView.isHidden = false
-            return 0
-        }
-        self.noDataImageView.isHidden = true
-        return mediaArr.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MediaCell else {return UITableViewCell()}
-        
-        cell.configCell(type: mediaType, media: mediaArr[indexPath.row])
-        
-        return cell
-    }
-}
-
-// MARK: - TableView Delegate Extension.
-
-extension MediaListVC: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = mediaArr[indexPath.row].previewUrl {
-            if let artworkUrl = mediaArr[indexPath.row].artworkUrl {
-                privewUrl(url: url, artworkUrl: artworkUrl)
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let theCell = cell as! MediaCell
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
-        theCell.artWorkImageView.layer.transform = rotationTransform
-        UIView.animate(withDuration: 0.7) {
-            theCell.artWorkImageView.layer.transform = CATransform3DIdentity
-        }
-    }
-}
-
-// MARK: - Search Bar Delegate Extension.
-
-extension MediaListVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        bindData(term: searchText, media: mediaType.rawValue)
-        tableView.reloadData()
     }
 }

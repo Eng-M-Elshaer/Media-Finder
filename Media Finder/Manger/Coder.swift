@@ -12,12 +12,12 @@ struct Coder {
     
     static func encodUser(user:User) -> Data? {
         
-           let encoder = JSONEncoder()
-           if let encoded = try? encoder.encode(user) {
-               return encoded
-           }
-           return nil
-       }
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            return encoded
+        }
+        return nil
+    }
        
     static func decodUser(userData:Data) -> User? {
 
@@ -35,7 +35,7 @@ struct Coder {
                return encoded
            }
            return nil
-       }
+    }
        
     static func decodMedia(userData:Data) -> [Media]? {
         
@@ -44,5 +44,5 @@ struct Coder {
             return loadedMedia
         }
         return nil
-       }
+    }
 }

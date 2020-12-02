@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 
 // MARK: - MapDelegate Protocol.
-
 protocol MapDelegate {
     func setDelailLocationInAddress(delailsAddress: String,tag:Int)
 }
@@ -18,7 +17,6 @@ protocol MapDelegate {
 class MapVC: UIViewController {
     
     // MARK: - Outlets.
-
     @IBOutlet weak var userLocatoinLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -27,24 +25,19 @@ class MapVC: UIViewController {
     lazy var geocoder = CLGeocoder()
     var tag = 0
 
-    // MARK: - LifeCycle Functions.
-
+    // MARK: - LifeCycle Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    // MARK: - Button Functions.
-    
+    // MARK: - Actions.
     @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
-        
         if sender.state == .ended {
             removeAllAnnotations()
             let locationInView = sender.location(in: mapView)
@@ -52,21 +45,18 @@ class MapVC: UIViewController {
             addAnnotation(coordinate: tappedCoordinate)
         }
     }
-
     @IBAction func submitBtnPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
 }
 
-// MARK: - MapVC Extension.
-
+// MARK: - MapVC Methods.
 extension MapVC {
-    
+
     private func removeAllAnnotations() {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
     }
-    
     private func addAnnotation(coordinate:CLLocationCoordinate2D) {
         
         let annotation = MKPointAnnotation()
@@ -75,7 +65,6 @@ extension MapVC {
         getNameOfLocation(lat: coordinate.latitude, long: coordinate.longitude)
         
     }
-    
     private func getNameOfLocation(lat:CLLocationDegrees,long:CLLocationDegrees) {
         
         let location = CLLocation(latitude: lat, longitude: long)
@@ -85,14 +74,12 @@ extension MapVC {
             // Process Response
             self.processResponse(withPlacemarks: placemarks, error: error)
         }
-        
     }
     
     private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
         
         if error != nil {
             userLocatoinLabel.text = "Unable to Find Address for Location"
-            
         } else {
             if let placemarks = placemarks, let placemark = placemarks.first {
                 userLocatoinLabel.text = placemark.compactAddress ?? ""

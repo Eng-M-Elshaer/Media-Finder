@@ -10,9 +10,10 @@ import Foundation
 
 class UserDefultsManger {
     
-    let defaults = UserDefaults.standard
     private static let sharedInstance = UserDefultsManger()
     
+    let defaults = UserDefaults.standard
+
     class func shared() -> UserDefultsManger {
         return UserDefultsManger.sharedInstance
     }

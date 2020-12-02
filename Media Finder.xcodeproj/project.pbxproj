@@ -16,10 +16,10 @@
 		E21325152492773500493E53 /* MediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21325142492773500493E53 /* MediaResponse.swift */; };
 		E21325172492774800493E53 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21325162492774800493E53 /* Media.swift */; };
 		E2132519249277E800493E53 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2132518249277E800493E53 /* APIManager.swift */; };
-		E213251C249280F400493E53 /* MediaListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213251B249280F400493E53 /* MediaListVC.swift */; };
 		E2132524249285EB00493E53 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2132522249285EB00493E53 /* MediaCell.swift */; };
 		E2132525249285EB00493E53 /* MediaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2132523249285EB00493E53 /* MediaCell.xib */; };
 		E23C6E902496548D0047457F /* SQLiteManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C6E8F2496548D0047457F /* SQLiteManger.swift */; };
+		E253ED93257826AE00537075 /* MediaListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E253ED92257826AE00537075 /* MediaListVC.swift */; };
 		E260229D248F984B00519D7E /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260229A248F984B00519D7E /* SignInVC.swift */; };
 		E260229E248F984B00519D7E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260229B248F984B00519D7E /* MapVC.swift */; };
 		E260229F248F984B00519D7E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260229C248F984B00519D7E /* SignUpVC.swift */; };
@@ -47,10 +47,10 @@
 		E21325142492773500493E53 /* MediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaResponse.swift; sourceTree = "<group>"; };
 		E21325162492774800493E53 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		E2132518249277E800493E53 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		E213251B249280F400493E53 /* MediaListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaListVC.swift; path = "Media Finder/View/StoryBoard/MediaListVC.swift"; sourceTree = SOURCE_ROOT; };
 		E2132522249285EB00493E53 /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		E2132523249285EB00493E53 /* MediaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCell.xib; sourceTree = "<group>"; };
 		E23C6E8F2496548D0047457F /* SQLiteManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManger.swift; sourceTree = "<group>"; };
+		E253ED92257826AE00537075 /* MediaListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaListVC.swift; path = "Media Finder/Resoures/StoryBoard/MediaListVC.swift"; sourceTree = SOURCE_ROOT; };
 		E260229A248F984B00519D7E /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		E260229B248F984B00519D7E /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		E260229C248F984B00519D7E /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -134,6 +134,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		E253ED952578277700537075 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				E2E045C0247BF80D002644F4 /* Assets.xcassets */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
 		E2B29FCC248D454700F4619E /* Manger */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,8 +156,9 @@
 		E2B29FCD248D455800F4619E /* Resoures */ = {
 			isa = PBXGroup;
 			children = (
+				E213251A2492798600493E53 /* StoryBoard */,
 				E200E4EB249A5D0100AA96CF /* SwiftGen */,
-				E2E045C0247BF80D002644F4 /* Assets.xcassets */,
+				E253ED952578277700537075 /* Asset */,
 			);
 			path = Resoures;
 			sourceTree = "<group>";
@@ -193,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				E21325212492820800493E53 /* Cell */,
-				E213251A2492798600493E53 /* StoryBoard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,7 +212,7 @@
 				E260229C248F984B00519D7E /* SignUpVC.swift */,
 				E260229B248F984B00519D7E /* MapVC.swift */,
 				E260229A248F984B00519D7E /* SignInVC.swift */,
-				E213251B249280F400493E53 /* MediaListVC.swift */,
+				E253ED92257826AE00537075 /* MediaListVC.swift */,
 				E2E045E1247C136A002644F4 /* ProfileVC.swift */,
 			);
 			path = Controller;
@@ -349,10 +357,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E21325132492751500493E53 /* CLPlacemark+CompactAddress.swift in Sources */,
-				E213251C249280F400493E53 /* MediaListVC.swift in Sources */,
 				E29590792497B81300F1D0D6 /* Coder.swift in Sources */,
 				E21325152492773500493E53 /* MediaResponse.swift in Sources */,
 				E21325172492774800493E53 /* Media.swift in Sources */,
+				E253ED93257826AE00537075 /* MediaListVC.swift in Sources */,
 				E2132524249285EB00493E53 /* MediaCell.swift in Sources */,
 				E2E045E4247C1BF7002644F4 /* String+Trimed.swift in Sources */,
 				E2132510249274C000493E53 /* Constants.swift in Sources */,
@@ -524,7 +532,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mohamed-Elshaer.Media-Finder";
 				PRODUCT_NAME = "Media Finder";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -542,7 +550,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mohamed-Elshaer.Media-Finder";
 				PRODUCT_NAME = "Media Finder";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
