@@ -1,0 +1,12 @@
+strings:
+  inputs: Media Finder/Base.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift4
+      output: Media Finder/Resoures/SwiftGen/strings.swift
+xcassets:
+  inputs:
+    - Media Finder/Resoures/assets.xcassets
+  outputs:
+    - templateName: swift4
+      output: Media Finder/Resoures/SwiftGen/assets.swift
