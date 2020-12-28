@@ -11,23 +11,26 @@ import SQLite
 
 class SQLiteManger {
         
+    // MARK:- Singleton
     private static let sharedInstance = SQLiteManger()
     
     class func shared() -> SQLiteManger {
         return SQLiteManger.sharedInstance
     }
         
-    var database: Connection!
+    // MARK:- Properties
+    private var database: Connection!
     
-    let usersTable = Table(SQL.usersTable)
-    let idData = Expression<Int>(SQL.idData)
-    let userData = Expression<Data>(SQL.userData)
+    private let usersTable = Table(SQL.usersTable)
+    private let idData = Expression<Int>(SQL.idData)
+    private let userData = Expression<Data>(SQL.userData)
 
-    let mediaTable = Table(SQL.mediaTable)
-    let emailData = Expression<String>(SQL.emailData)
-    let mediaHistoryData = Expression<Data>(SQL.mediaHistoryData)
-    let mediaTypeData = Expression<String>(SQL.mediaTypeData)
+    private let mediaTable = Table(SQL.mediaTable)
+    private let emailData = Expression<String>(SQL.emailData)
+    private let mediaHistoryData = Expression<Data>(SQL.mediaHistoryData)
+    private let mediaTypeData = Expression<String>(SQL.mediaTypeData)
     
+    // MARK:- Methods
     func setDatabaseTable(tableName:String){
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

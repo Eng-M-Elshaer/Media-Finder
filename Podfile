@@ -7,12 +7,9 @@ target 'Media Finder' do
 
   # Pods for Media Finder
 
-pod 'IQKeyboardManagerSwift'
-pod 'Alamofire'
-pod 'SQLite.swift'
-pod 'SDWebImage'
-pod 'SwiftGen'
-
-
+  pod 'IQKeyboardManagerSwift'
+  pod 'Alamofire'
+  pod 'SQLite.swift'
+  pod 'SDWebImage'
 
 end

@@ -9,21 +9,18 @@
 import Foundation
 
 // MARK: - UserDefaultsKeys.
-
 struct UserDefaultsKeys {
     static let isLogedIn = "UDKisLogedIn"
     static let email = "UDKemail"
     static let user = "UDKuser"
 }
 
-// MARK: - StoryBoard ID.
-
+// MARK: - Storyboard.
 struct StoryBoard {
     static var main = "Main"
 }
 
-// MARK: - ViewController ID.
-
+// MARK: - ViewController.
 struct ViewController {
     static let signUpVC = "SignUpVC"
     static let mapVC = "MapVC"
@@ -33,22 +30,18 @@ struct ViewController {
 }
 
 // MARK: - URL.
-
 struct Urls {
     static let base = "https://itunes.apple.com/search?"
 }
 
 // MARK: - Parameters Keys.
-
 struct ParameterKey {
     static let term = "term"
     static let media = "media"
 }
 
 // MARK: - SQL Keys.
-
 struct SQL {
-    
     static let usersTable = "users"
     static let mediaTable = "media"
 
@@ -57,5 +50,9 @@ struct SQL {
     static let emailData = "email"
     static let mediaHistoryData = "mediaHistory"
     static let mediaTypeData = "mediaTypeData"
+}
 
+// MARK: - Cells.
+struct CustomCell {
+    static let mediaCell = "MediaCell"
 }

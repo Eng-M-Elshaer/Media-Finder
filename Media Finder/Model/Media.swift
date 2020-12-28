@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK:- Media
 struct Media: Codable {
     
     var artistName: String?
@@ -17,10 +18,7 @@ struct Media: Codable {
     var previewUrl: String!
     
     enum CodingKeys: String, CodingKey {
-        case artistName
-        case trackName
+        case artistName, trackName, longDescription, previewUrl
         case artworkUrl = "artworkUrl100"
-        case longDescription
-        case previewUrl
     }
 }

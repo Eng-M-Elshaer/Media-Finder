@@ -11,6 +11,7 @@ import SDWebImage
 
 class MediaCell: UITableViewCell {
 
+    // MARK:- Outlets
     @IBOutlet weak var artWorkImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
@@ -23,6 +24,7 @@ class MediaCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // MARK:- Public Methods
     func configCell(type:MediaType,media:Media){
         
         artWorkImageView.sd_setImage(with: URL(string: media.artworkUrl), placeholderImage: UIImage(named: "placeholder.png"))

@@ -20,10 +20,10 @@ class ProfileVC: UITableViewController {
     @IBOutlet weak var userAddressTwoLabel: UILabel!
     @IBOutlet weak var userAddressThreeLabel: UILabel!
     
-    // MARK: - Variables.
+    // MARK:- Properties
     var user = UserDefultsManger.shared().getUserDefaults()
     
-    // MARK: - LifeCyclye Methods.
+    // MARK: - Lifecyclye Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(true, forKey: "isLoged")
@@ -37,7 +37,7 @@ class ProfileVC: UITableViewController {
     }
     
     // MARK: - Actions.
-    @IBAction func logOutBtnPressed(_ sender: UIButton) {
+    @IBAction func logOutBtnTapped(_ sender: UIButton) {
         UserDefaults.standard.set(false, forKey: "isLoged")
         goToSignInVC()
     }
@@ -66,8 +66,9 @@ extension ProfileVC {
         userAddressThreeLabel.text = user?.addressThree
     }
     private func goToSignInVC(){
-        let sb = UIStoryboard(name: StoryBoard.main, bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: ViewController.signInVC ) as! SignInVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
+        let signInVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.signInVC ) as! SignInVC
+        self.navigationController?.viewControllers = [signInVC, self]
+        self.navigationController?.popViewController(animated: true)
     }
 }
