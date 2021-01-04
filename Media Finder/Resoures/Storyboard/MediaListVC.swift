@@ -11,7 +11,7 @@ import AVKit
 import SDWebImage
 
 class MediaListVC: UIViewController {
-
+    
     // MARK: - Outlets.
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -23,8 +23,8 @@ class MediaListVC: UIViewController {
     var mediaType: MediaType = .all
     var mediaKind = MediaType.all.rawValue
     let email = UserDefultsManger.shared().email
-    var image:UIView!
-
+    var image: UIView!
+    
     // MARK: - Lifecycle Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class MediaListVC: UIViewController {
     
     // MARK: - Actions.
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
-       let index = sender.selectedSegmentIndex
+        let index = sender.selectedSegmentIndex
         switch index {
         case 1:
             self.mediaType = .tvShow
@@ -118,9 +118,9 @@ extension MediaListVC {
         if let data = SQLiteManger.shared().getMediaDataFromDB(email: email)?.0 {
             if let media = Coder.decodMedia(userData: data){
                 if let type = SQLiteManger.shared().getMediaDataFromDB(email: email)?.1 {
-                        mediaArr = media
-                        mediaKind = type
-                        tableView.reloadData()
+                    mediaArr = media
+                    mediaKind = type
+                    tableView.reloadData()
                 }
             }
         }
@@ -150,7 +150,7 @@ extension MediaListVC {
         let vc = sb.instantiateViewController(withIdentifier: ViewController.profileVC ) as! ProfileVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    private func bindData(term:String,media:String) {
+    private func bindData(term: String, media: String) {
         APIManager.getDataFromAPI(term: term, media: media) { (error, mediaData) in
             if let error = error {
                 print(error.localizedDescription)
@@ -159,7 +159,7 @@ extension MediaListVC {
                 if let media = Coder.encodMedia(media: mediaData) {
                     if self.mediaArr.count > 0 {
                         SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media,
-                                                                type: self.mediaType.rawValue)
+                                                                 type: self.mediaType.rawValue)
                     }
                 }
                 self.tableView.reloadData()
@@ -169,12 +169,12 @@ extension MediaListVC {
     private func setImageForAVPlayer(cell:MediaCell) -> UIView {
         return cell.artWorkImageView
     }
-    private func privewUrl(url:String,artworkUrl:String){
+    private func privewUrl(url: String, artworkUrl: String){
         let url = URL(string: url)
         let player = AVPlayer(url: url!)
         let vc = AVPlayerViewController()
         vc.player = player
-//        vc.contentOverlayView?.addSubview(image)
+        //        vc.contentOverlayView?.addSubview(image)
         present(vc, animated: true) {
             vc.player?.play()
         }

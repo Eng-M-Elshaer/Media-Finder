@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIViewController {
-    
     /// add alert function to the VC
     func showAlert(title: String, message: String ){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

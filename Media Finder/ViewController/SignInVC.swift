@@ -50,7 +50,6 @@ extension SignInVC {
             self.showAlert(title: "Error", message: "Please Enter Email")
             return false
         }
-       
         guard (passwordTextField.text) != "" else {
             self.showAlert(title: "Error", message: "Please Enter Password")
             return false

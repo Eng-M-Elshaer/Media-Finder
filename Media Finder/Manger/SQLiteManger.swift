@@ -41,11 +41,8 @@ class SQLiteManger {
             print(error)
         }
     }
-    
     func createUserTable(){
-        
         print("CREATEING USER TABLE")
-        
         let createTable = self.usersTable.create { (table) in
             table.column(self.idData, primaryKey: true)
             table.column(self.userData)
@@ -58,11 +55,8 @@ class SQLiteManger {
             print(error)
         }
     }
-    
     func createMediaTable(){
-        
         print("CREATEING MEDIA TABLE")
-        
         let createTable = self.mediaTable.create { (table) in
             table.column(self.emailData, primaryKey: true)
             table.column(self.mediaHistoryData)
@@ -76,11 +70,8 @@ class SQLiteManger {
             print(error)
         }
     }
-    
     func insertInUserTable(user: Data) {
-        
         print("INSERT TAPPED")
-        
         let insertUser = self.usersTable.insert(self.userData <- user)
         
         do {
@@ -90,14 +81,10 @@ class SQLiteManger {
         } catch {
             print(error)
         }
-        
     }
-    
     func insertInMediaTable(email: String, mediaData: Data, type: String) {
-        
         print("REMOVE ALL")
         deleteMediaTable()
-        
         print("INSERT TAPPED")
         
         let insertMedia = self.mediaTable.insert(self.emailData <- email,
@@ -112,9 +99,7 @@ class SQLiteManger {
         } catch {
             print(error)
         }
-        
     }
-    
     private func deleteMediaTable() {
         do {
             if try database.run(mediaTable.delete()) > 0 {
@@ -126,9 +111,7 @@ class SQLiteManger {
             print("delete failed: \(error)")
         }
     }
-    
     func getUsersFromDB() -> [Data]? {
-        
         var usersData = [Data]()
         usersData.removeAll()
         print("Get Data")
@@ -146,11 +129,8 @@ class SQLiteManger {
         }
         return nil
     }
-    
     func getUserFromDB(email: String) -> User? {
-        
         print("Get Data")
-        
         do {
             let users = try self.database.prepare(self.usersTable)
             for user in users {
@@ -166,11 +146,8 @@ class SQLiteManger {
         }
         return nil
     }
-    
     func getMediaDataFromDB(email: String) -> (Data, String)? {
-        
         print("Get Data Media")
-        
         do {
             let medias = try self.database.prepare(self.mediaTable)
             for media in medias {

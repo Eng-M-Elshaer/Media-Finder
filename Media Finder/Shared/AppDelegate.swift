@@ -53,22 +53,22 @@ extension AppDelegate {
         navigationController.view.backgroundColor = .clear
     }
     private func swithToMainState(_ mainStoryboard: UIStoryboard){
-        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.profileVC) as! ProfileVC
         let navigationController = UINavigationController(rootViewController: rootVC)
         setNavbar(navigationController: navigationController)
         window?.rootViewController = navigationController
     }
     private func swithToAuthState(_ mainStoryboard: UIStoryboard){
-        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.signInVC) as! SignInVC
         let navigationController = UINavigationController(rootViewController: rootVC)
         setNavbar(navigationController: navigationController)
         window?.rootViewController = navigationController
     }
     private func setRootView(){
         
-        let userData = UserDefaults.standard.object(forKey: "User")
-        let isLoged = UserDefaults.standard.bool(forKey: "isLoged")
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let userData = UserDefaults.standard.object(forKey: UserDefaultsKeys.user)
+        let isLoged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogedIn)
+        let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
         
         if userData != nil {
             if isLoged {

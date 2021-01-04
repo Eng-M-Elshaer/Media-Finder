@@ -16,10 +16,10 @@ class UserDefultsManger {
     class func shared() -> UserDefultsManger {
         return UserDefultsManger.sharedInstance
     }
-
+    
     // MARK:- Properties
     private let defaults = UserDefaults.standard
-
+    
     var isLogedIn: Bool  {
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.isLogedIn )

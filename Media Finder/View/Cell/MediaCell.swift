@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 class MediaCell: UITableViewCell {
-
+    
     // MARK:- Outlets
     @IBOutlet weak var artWorkImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,13 +19,13 @@ class MediaCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     // MARK:- Public Methods
-    func configCell(type:MediaType,media:Media){
+    func configCell(type: MediaType, media: Media){
         
         artWorkImageView.sd_setImage(with: URL(string: media.artworkUrl), placeholderImage: UIImage(named: "placeholder.png"))
         

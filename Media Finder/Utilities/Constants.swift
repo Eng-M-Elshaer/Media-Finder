@@ -44,7 +44,7 @@ struct ParameterKey {
 struct SQL {
     static let usersTable = "users"
     static let mediaTable = "media"
-
+    
     static let idData = "id"
     static let userData = "userData"
     static let emailData = "email"

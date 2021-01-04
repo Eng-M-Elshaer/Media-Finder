@@ -56,13 +56,13 @@ extension MapVC {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
     }
-    private func addAnnotation(coordinate:CLLocationCoordinate2D) {
+    private func addAnnotation(coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
         getNameOfLocation(lat: coordinate.latitude, long: coordinate.longitude)
     }
-    private func getNameOfLocation(lat:CLLocationDegrees,long:CLLocationDegrees) {
+    private func getNameOfLocation(lat: CLLocationDegrees, long: CLLocationDegrees) {
         let location = CLLocation(latitude: lat, longitude: long)
         // Geocode Location
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
@@ -71,7 +71,6 @@ extension MapVC {
         }
     }
     private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
-        
         if error != nil {
             userLocatoinLabel.text = "Unable to Find Address for Location"
         } else {

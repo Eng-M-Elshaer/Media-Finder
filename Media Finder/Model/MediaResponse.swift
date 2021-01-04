@@ -18,6 +18,6 @@ enum MediaType: String {
 
 // MARK:- MediaResponse
 struct MediaResponse: Codable {
-    var resultCount:Int!
-    var results:[Media]!
+    var resultCount: Int!
+    var results: [Media]!
 }
