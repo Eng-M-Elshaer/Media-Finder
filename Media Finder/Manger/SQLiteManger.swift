@@ -10,28 +10,28 @@ import Foundation
 import SQLite
 
 class SQLiteManger {
-        
+    
     // MARK:- Singleton
     private static let sharedInstance = SQLiteManger()
     
     class func shared() -> SQLiteManger {
         return SQLiteManger.sharedInstance
     }
-        
+    
     // MARK:- Properties
     private var database: Connection!
     
     private let usersTable = Table(SQL.usersTable)
     private let idData = Expression<Int>(SQL.idData)
     private let userData = Expression<Data>(SQL.userData)
-
+    
     private let mediaTable = Table(SQL.mediaTable)
     private let emailData = Expression<String>(SQL.emailData)
     private let mediaHistoryData = Expression<Data>(SQL.mediaHistoryData)
     private let mediaTypeData = Expression<String>(SQL.mediaTypeData)
     
     // MARK:- Methods
-    func setDatabaseTable(tableName:String){
+    func setDatabaseTable(tableName: String){
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent(tableName).appendingPathExtension("sqlite3")
@@ -58,17 +58,17 @@ class SQLiteManger {
             print(error)
         }
     }
-
+    
     func createMediaTable(){
-
+        
         print("CREATEING MEDIA TABLE")
-
+        
         let createTable = self.mediaTable.create { (table) in
             table.column(self.emailData, primaryKey: true)
             table.column(self.mediaHistoryData)
             table.column(self.mediaTypeData)
         }
-
+        
         do {
             try self.database.run(createTable)
             print("Created Table")
@@ -76,8 +76,8 @@ class SQLiteManger {
             print(error)
         }
     }
-
-    func insertInUserTable(user:Data) {
+    
+    func insertInUserTable(user: Data) {
         
         print("INSERT TAPPED")
         
@@ -93,7 +93,7 @@ class SQLiteManger {
         
     }
     
-    func insertInMediaTable(email:String,mediaData:Data,type:String) {
+    func insertInMediaTable(email: String, mediaData: Data, type: String) {
         
         print("REMOVE ALL")
         deleteMediaTable()
@@ -101,8 +101,8 @@ class SQLiteManger {
         print("INSERT TAPPED")
         
         let insertMedia = self.mediaTable.insert(self.emailData <- email,
-                                                self.mediaHistoryData <- mediaData,
-                                                self.mediaTypeData <- type
+                                                 self.mediaHistoryData <- mediaData,
+                                                 self.mediaTypeData <- type
         )
         
         do {
@@ -136,25 +136,25 @@ class SQLiteManger {
         do {
             let users = try self.database.prepare(self.usersTable)
             for user in users {
-                 print("ID: \(user[self.idData]), user data: \(user[self.userData])")
-                 let data = user[self.userData]
-                 usersData.append(contentsOf: [data])
+                print("ID: \(user[self.idData]), user data: \(user[self.userData])")
+                let data = user[self.userData]
+                usersData.append(contentsOf: [data])
             }
             return usersData
         } catch {
             print(error)
         }
-    return nil
+        return nil
     }
     
-    func getUserFromDB(email:String) -> User? {
+    func getUserFromDB(email: String) -> User? {
         
         print("Get Data")
         
         do {
             let users = try self.database.prepare(self.usersTable)
             for user in users {
-                 print("ID: \(user[self.idData]), user data: \(user[self.userData])")
+                print("ID: \(user[self.idData]), user data: \(user[self.userData])")
                 let data = user[self.userData]
                 let decodUser = Coder.decodUser(userData: data)
                 if email == decodUser?.email {
@@ -164,10 +164,10 @@ class SQLiteManger {
         } catch {
             print(error)
         }
-    return nil
+        return nil
     }
     
-    func getMediaDataFromDB(email:String) -> (Data,String)? {
+    func getMediaDataFromDB(email: String) -> (Data, String)? {
         
         print("Get Data Media")
         
@@ -184,6 +184,6 @@ class SQLiteManger {
         } catch {
             print(error)
         }
-    return nil
+        return nil
     }
 }
