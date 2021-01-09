@@ -32,7 +32,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuj-Oy-mUR">
                                                     <rect key="frame" x="41.5" y="30" width="331" height="140"/>
                                                     <connections>
-                                                        <action selector="userImageBtnPressed:" destination="L7n-il-Kt3" eventType="touchUpInside" id="NDO-ry-pQR"/>
+                                                        <action selector="userImageBtnTapped:" destination="L7n-il-Kt3" eventType="touchUpInside" id="rBv-i6-eG6"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -198,7 +198,7 @@
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsJ-mg-ez3">
                                                     <rect key="frame" x="16" y="6" width="382" height="36.5"/>
                                                     <connections>
-                                                        <action selector="addressBtnPressed:" destination="L7n-il-Kt3" eventType="touchUpInside" id="tYl-HI-CcG"/>
+                                                        <action selector="addressBtnTapped:" destination="L7n-il-Kt3" eventType="touchUpInside" id="1qE-r6-UOT"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -231,7 +231,7 @@
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Kg-53-4N5">
                                                     <rect key="frame" x="16" y="6" width="382" height="36.5"/>
                                                     <connections>
-                                                        <action selector="addressBtnPressed:" destination="L7n-il-Kt3" eventType="touchUpInside" id="Sci-cM-8zO"/>
+                                                        <action selector="addressBtnTapped:" destination="L7n-il-Kt3" eventType="touchUpInside" id="oJg-Mt-07e"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -264,7 +264,7 @@
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cal-Yr-x0A">
                                                     <rect key="frame" x="16" y="6" width="382" height="36.5"/>
                                                     <connections>
-                                                        <action selector="addressBtnPressed:" destination="L7n-il-Kt3" eventType="touchUpInside" id="rCZ-97-nsl"/>
+                                                        <action selector="addressBtnTapped:" destination="L7n-il-Kt3" eventType="touchUpInside" id="RTE-xe-0FV"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -301,7 +301,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="signUpBtnPressed:" destination="L7n-il-Kt3" eventType="touchUpInside" id="pwV-2u-aoN"/>
+                                                        <action selector="signUpBtnTapped:" destination="L7n-il-Kt3" eventType="touchUpInside" id="Xpf-AA-qGP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -473,14 +473,14 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="182" height="34"/>
                                                         <state key="normal" title="Create Account"/>
                                                         <connections>
-                                                            <action selector="createAccountBtnPressed:" destination="OhK-WY-gSX" eventType="touchUpInside" id="c7a-8T-CBZ"/>
+                                                            <action selector="createAccountBtnTapped:" destination="OhK-WY-gSX" eventType="touchUpInside" id="VwJ-0f-JIb"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-nc-dCi">
                                                         <rect key="frame" x="192" y="0.0" width="182" height="34"/>
                                                         <state key="normal" title="Sign In"/>
                                                         <connections>
-                                                            <action selector="signInBtnPressed:" destination="OhK-WY-gSX" eventType="touchUpInside" id="R1d-Tq-3bP"/>
+                                                            <action selector="signInBtnTapped:" destination="OhK-WY-gSX" eventType="touchUpInside" id="Bx8-iZ-GQz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -676,7 +676,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="------------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3D-8d-Qoz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="------------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P3D-8d-Qoz">
                                                     <rect key="frame" x="129" y="11" width="92" height="32.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -689,6 +689,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="P3D-8d-Qoz" secondAttribute="bottom" constant="6.5" id="KhF-jC-eXD"/>
                                                 <constraint firstAttribute="bottom" secondItem="BKC-ri-rqJ" secondAttribute="bottom" constant="6.5" id="Rgg-Hy-MvG"/>
                                                 <constraint firstItem="BKC-ri-rqJ" firstAttribute="leading" secondItem="XcT-ax-NB5" secondAttribute="leading" constant="16" id="Wat-i0-6Jm"/>
+                                                <constraint firstAttribute="trailing" secondItem="P3D-8d-Qoz" secondAttribute="trailing" constant="193" id="gfr-bW-dhw"/>
                                                 <constraint firstItem="P3D-8d-Qoz" firstAttribute="leading" secondItem="BKC-ri-rqJ" secondAttribute="trailing" constant="10" id="uUL-JX-sWw"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -707,7 +708,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmW-uN-Swu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TmW-uN-Swu">
                                                     <rect key="frame" x="129" y="11" width="76" height="32.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -738,7 +739,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcW-rQ-RPA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UcW-rQ-RPA">
                                                     <rect key="frame" x="142" y="11" width="61" height="32.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -776,7 +777,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="logOutBtnPressed:" destination="sMu-bx-BQH" eventType="touchUpInside" id="abZ-Yt-HMb"/>
+                                                        <action selector="logOutBtnTapped:" destination="sMu-bx-BQH" eventType="touchUpInside" id="dQY-2o-jX8"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

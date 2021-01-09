@@ -38,12 +38,7 @@ class MapVC: UIViewController {
     
     // MARK: - Actions.
     @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            removeAllAnnotations()
-            let locationInView = sender.location(in: mapView)
-            let tappedCoordinate = mapView.convert(locationInView, toCoordinateFrom: mapView)
-            addAnnotation(coordinate: tappedCoordinate)
-        }
+       tapedGesture(sender)
     }
     @IBAction func submitBtnTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -81,6 +76,18 @@ extension MapVC {
                 userLocatoinLabel.text = "No Matching Addresses Found"
                 delegate?.setDelailLocationInAddress(delailsAddress: "No Matching Addresses Found", tag: tag )
             }
+        }
+    }
+}
+
+//MARK:- Private Methods.
+extension MapVC {
+    private func tapedGesture(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            removeAllAnnotations()
+            let locationInView = sender.location(in: mapView)
+            let tappedCoordinate = mapView.convert(locationInView, toCoordinateFrom: mapView)
+            addAnnotation(coordinate: tappedCoordinate)
         }
     }
 }

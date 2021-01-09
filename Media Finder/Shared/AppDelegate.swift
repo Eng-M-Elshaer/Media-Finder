@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setRootView()
         IQKeyboardManager.shared.enable = true
+        setupSQL()
         return true
     }
 
@@ -53,7 +54,7 @@ extension AppDelegate {
         navigationController.view.backgroundColor = .clear
     }
     private func swithToMainState(_ mainStoryboard: UIStoryboard){
-        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.profileVC) as! ProfileVC
+        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.mediaListVC) as! MediaListVC
         let navigationController = UINavigationController(rootViewController: rootVC)
         setNavbar(navigationController: navigationController)
         window?.rootViewController = navigationController
@@ -65,8 +66,7 @@ extension AppDelegate {
         window?.rootViewController = navigationController
     }
     private func setRootView(){
-        
-        let userData = UserDefaults.standard.object(forKey: UserDefaultsKeys.user)
+        let userData = UserDefaults.standard.object(forKey: UserDefaultsKeys.isLogedIn)
         let isLoged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogedIn)
         let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
         
@@ -77,5 +77,11 @@ extension AppDelegate {
                swithToAuthState(mainStoryboard)
             }
         }
+    }
+    private func setupSQL(){
+        SQLiteManger.shared().setDatabaseTable(tableName: SQL.mediaTable)
+        SQLiteManger.shared().setDatabaseTable(tableName: SQL.usersTable)
+        SQLiteManger.shared().createUserTable()
+        SQLiteManger.shared().createMediaTable()
     }
 }

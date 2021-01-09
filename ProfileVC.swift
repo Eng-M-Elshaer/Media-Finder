@@ -21,19 +21,17 @@ class ProfileVC: UITableViewController {
     @IBOutlet weak var userAddressThreeLabel: UILabel!
     
     // MARK:- Properties
-    var user = UserDefultsManger.shared().getUserDefaults()
+    var user: User!
     
     // MARK: - Lifecyclye Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(true, forKey: "isLoged")
+        title = "Profile"
+        user = SQLiteManger.shared().getUserFromDB(email: UserDefultsManger.shared().email)
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
         setUserData()
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Actions.

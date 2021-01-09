@@ -37,36 +37,16 @@ class SignUpVC: UITableViewController {
 
     // MARK: - Actions.
     @IBAction func userGenderSwitchChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            gender = .female
-        } else {
-            gender = .male
-        }
+        userGenderChanged(sender)
     }
     @IBAction func addressBtnTapped(_ sender: UIButton) {
-        let sb = UIStoryboard(name: StoryBoard.main, bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: ViewController.mapVC) as! MapVC
-        vc.delegate = self
-        vc.tag = sender.tag
-        self.navigationController?.pushViewController(vc, animated: true)
+        addressTapped(sender)
     }
     @IBAction func userImageBtnTapped(_ sender: UIButton) {
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        userImageTapped()
     }
     @IBAction func signUpBtnTapped(_ sender: UIButton) {
-        if isVaildData() {
-            if isValidRegax() {
-                user = User(image: CodableImage(withImage: userImageView.image!), name: userNameTextField.text,
-                            email: userEmailTextField.text,
-                            phone: userPhoneTextField.text, password: userPasswordTextField.text, gender: gender,
-                            addressOne: userAddressOneTextField.text, addressTwo: userAddressTwoTextField.text,
-                            addressThree: userAddressThreeTextField.text)
-                UserDefultsManger.shared().setUserDefaults(user: user)
-                goToSignInVC()
-            }
-        }
+        signUpTapped()
     }
 }
 
@@ -117,7 +97,6 @@ extension SignUpVC {
         let signInVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.signInVC) as! SignInVC
         self.navigationController?.pushViewController(signInVC, animated: true)
     }
-    
     private func isVaildData() -> Bool {
         guard (userEmailTextField.text?.trimmed) != "" else {
             self.showAlert(title: "Error", message: "Please Enter Email")
@@ -151,5 +130,42 @@ extension SignUpVC {
             return false
         }
         return true
+    }
+    private func getUser() -> User {
+        user = User(image: CodableImage(withImage: userImageView.image!), name: userNameTextField.text,
+                    email: userEmailTextField.text,
+                    phone: userPhoneTextField.text, password: userPasswordTextField.text, gender: gender,
+                    addressOne: userAddressOneTextField.text, addressTwo: userAddressTwoTextField.text,
+                    addressThree: userAddressThreeTextField.text)
+        return user
+    }
+    private func signUpTapped(){
+        if isVaildData() {
+            if isValidRegax() {
+                if let user = Coder.encodUser(user: getUser()) {
+                    SQLiteManger.shared().insertInUserTable(user: user)
+                }
+                goToSignInVC()
+            }
+        }
+    }
+    private func addressTapped(_ sender: UIButton){
+        let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
+        let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapVC) as! MapVC
+        mapVC.delegate = self
+        mapVC.tag = sender.tag
+        self.navigationController?.pushViewController(mapVC, animated: true)
+    }
+    private func userImageTapped(){
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    private func userGenderChanged(_ sender: UISwitch){
+        if sender.isOn {
+            gender = .female
+        } else {
+            gender = .male
+        }
     }
 }

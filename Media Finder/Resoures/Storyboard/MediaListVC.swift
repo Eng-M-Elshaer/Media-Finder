@@ -29,7 +29,6 @@ class MediaListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefultsManger.shared().isLogedIn = true
-        SQLiteManger.shared().setDatabaseTable(tableName: SQL.mediaTable)
         SQLiteManger.shared().createMediaTable()
         tableView.register(UINib(nibName: CustomCell.mediaCell, bundle: nil), forCellReuseIdentifier: CustomCell.mediaCell)
     }
