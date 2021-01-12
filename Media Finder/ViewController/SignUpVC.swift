@@ -29,7 +29,7 @@ class SignUpVC: UITableViewController {
     // MARK: - Lifecycle Mehtods.
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagePicker.delegate = self
+        setup()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -67,16 +67,7 @@ extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 // MARK: - MapCenterDelegate Extension.
 extension SignUpVC: MapDelegate {
     func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
-        switch tag {
-        case 1:
-            userAddressOneTextField.text = delailsAddress
-        case 2:
-            userAddressTwoTextField.text = delailsAddress
-        case 3:
-            userAddressThreeTextField.text = delailsAddress
-        default:
-            print("Error In Tags")
-        }
+        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
     }
 }
 
@@ -98,35 +89,39 @@ extension SignUpVC {
         self.navigationController?.pushViewController(signInVC, animated: true)
     }
     private func isVaildData() -> Bool {
-        guard (userEmailTextField.text?.trimmed) != "" else {
-            self.showAlert(title: "Error", message: "Please Enter Email")
+        guard userImageView.image != UIImage(named: Images.user) else {
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.choosePhoto)
             return false
         }
-        guard userImageView.image != UIImage(named: "user") else {
-            self.showAlert(title: "Error", message: "Please Choose Photo")
+        guard (userEmailTextField.text?.trimmed) != "" else {
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterEmail)
             return false
         }
         guard (userPasswordTextField.text) != "" else {
-            self.showAlert(title: "Error", message: "Please Enter Password")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterPassword)
             return false
         }
         guard (userPhoneTextField.text?.trimmed) != "" else {
-            self.showAlert(title: "Error", message: "Please Enter Phone")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterPhone)
             return false
         }
         guard (userAddressOneTextField.text?.trimmed) != "" else {
-            self.showAlert(title: "Error", message: "Please Enter Address")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterAddress)
             return false
         }
         return true
     }
     private func isValidRegax() -> Bool {
         guard isValidEmail(email: userEmailTextField.text?.trimmed) else {
-            self.showAlert(title: "Error", message: "Enter Vaild Email")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.vaildEmail)
             return false
         }
         guard isValidPassword(testStr: userPasswordTextField.text) else {
-            self.showAlert(title: "Error", message: "Password need to be: \n at least one uppercase \n at least one digit \n at least one lowercase \n 8 characters total")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.vaildPassword)
+            return false
+        }
+        guard isValidPhone(number: userPhoneTextField.text?.trimmed) else {
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.vaildPhone)
             return false
         }
         return true
@@ -167,5 +162,19 @@ extension SignUpVC {
         } else {
             gender = .male
         }
+    }
+    private func setDelailLocation(delailsAddress: String, tag: Int){
+        switch tag {
+        case 1:
+            userAddressOneTextField.text = delailsAddress
+        case 2:
+            userAddressTwoTextField.text = delailsAddress
+        default:
+            userAddressThreeTextField.text = delailsAddress
+        }
+    }
+    private func setup(){
+        imagePicker.delegate = self
+        userImageView.image = UIImage(named: Images.user)
     }
 }

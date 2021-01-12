@@ -10,8 +10,8 @@ import UIKit
 
 // MARK:- Gender
 enum Gender: String, Codable {
-    case male
-    case female
+    case male = "Male"
+    case female = "Female"
 }
 
 // MARK:- User
@@ -37,7 +37,6 @@ struct CodableImage: Codable {
             return nil
         }
         let image = UIImage(data: imageData)
-        
         return image
     }
     

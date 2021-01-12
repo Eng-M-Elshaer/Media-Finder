@@ -22,4 +22,10 @@ extension UIViewController {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}")
         return passwordTest.evaluate(with: testStr)
     }
+    /// validate on password . at least one uppercase, at least one digit, at least one lowercase, 8 characters total.
+    func isValidPhone(number: String?) -> Bool {
+        guard number != nil else { return false }
+        let numberTest = NSPredicate(format: "SELF MATCHES %@", "^[0-9]{11}$")
+        return numberTest.evaluate(with: number)
+    }
 }

@@ -689,7 +689,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="P3D-8d-Qoz" secondAttribute="bottom" constant="6.5" id="KhF-jC-eXD"/>
                                                 <constraint firstAttribute="bottom" secondItem="BKC-ri-rqJ" secondAttribute="bottom" constant="6.5" id="Rgg-Hy-MvG"/>
                                                 <constraint firstItem="BKC-ri-rqJ" firstAttribute="leading" secondItem="XcT-ax-NB5" secondAttribute="leading" constant="16" id="Wat-i0-6Jm"/>
-                                                <constraint firstAttribute="trailing" secondItem="P3D-8d-Qoz" secondAttribute="trailing" constant="193" id="gfr-bW-dhw"/>
                                                 <constraint firstItem="P3D-8d-Qoz" firstAttribute="leading" secondItem="BKC-ri-rqJ" secondAttribute="trailing" constant="10" id="uUL-JX-sWw"/>
                                             </constraints>
                                         </tableViewCellContentView>

@@ -38,18 +38,18 @@ class SignInVC: UIViewController {
 extension SignInVC {
     private func isVaildData() -> Bool {
         guard (emailTextField.text?.trimmed) != "" else {
-            self.showAlert(title: "Error", message: "Please Enter Email")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterEmail)
             return false
         }
         guard (passwordTextField.text) != "" else {
-            self.showAlert(title: "Error", message: "Please Enter Password")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterPassword)
             return false
         }
         return true
     }
     private func isUserDataVaild(user: User) -> Bool {
         guard emailTextField.text == user.email, passwordTextField.text == user.password else {
-            self.showAlert(title: "Error", message: "Invalid Email & Password")
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.invalidEmailOrPassword)
             return false
         }
         return true

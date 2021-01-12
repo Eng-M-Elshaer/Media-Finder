@@ -28,9 +28,7 @@ class MediaListVC: UIViewController {
     // MARK: - Lifecycle Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefultsManger.shared().isLogedIn = true
-        SQLiteManger.shared().createMediaTable()
-        tableView.register(UINib(nibName: CustomCell.mediaCell, bundle: nil), forCellReuseIdentifier: CustomCell.mediaCell)
+        setup()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -39,21 +37,7 @@ class MediaListVC: UIViewController {
     
     // MARK: - Actions.
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
-        let index = sender.selectedSegmentIndex
-        switch index {
-        case 1:
-            self.mediaType = .tvShow
-        case 2:
-            self.mediaType = .music
-        case 3:
-            self.mediaType = .movie
-        default:
-            self.mediaType = .all
-        }
-        guard let searchText = searchBar.text, searchText != "" else {
-            return
-        }
-        bindData(term: searchText, media: mediaType.rawValue)
+        segmentedChangedAction(sender)
     }
 }
 
@@ -110,8 +94,8 @@ extension MediaListVC {
         setSegmanet()
     }
     private func setNavView(){
-        self.navigationItem.title = "Media List"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(goToProvileVC))
+        self.navigationItem.title = ViewControllerTitle.mediaList
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: ViewControllerTitle.profile, style: .plain, target: self, action: #selector(goToProvileVC))
     }
     private func getMediaFromDB(){
         if let data = SQLiteManger.shared().getMediaDataFromDB(email: email)?.0 {
@@ -173,9 +157,31 @@ extension MediaListVC {
         let player = AVPlayer(url: url!)
         let vc = AVPlayerViewController()
         vc.player = player
-        //        vc.contentOverlayView?.addSubview(image)
+//        vc.contentOverlayView?.addSubview(image)
         present(vc, animated: true) {
             vc.player?.play()
         }
+    }
+    private func setup(){
+        UserDefultsManger.shared().isLogedIn = true
+        SQLiteManger.shared().createMediaTable()
+        tableView.register(UINib(nibName: CustomCell.mediaCell, bundle: nil), forCellReuseIdentifier: CustomCell.mediaCell)
+    }
+    private func segmentedChangedAction(_ sender: UISegmentedControl){
+        let index = sender.selectedSegmentIndex
+        switch index {
+        case 1:
+            self.mediaType = .tvShow
+        case 2:
+            self.mediaType = .music
+        case 3:
+            self.mediaType = .movie
+        default:
+            self.mediaType = .all
+        }
+        guard let searchText = searchBar.text, searchText != "" else {
+            return
+        }
+        bindData(term: searchText, media: mediaType.rawValue)
     }
 }

@@ -26,9 +26,7 @@ class ProfileVC: UITableViewController {
     // MARK: - Lifecyclye Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set(true, forKey: "isLoged")
-        title = "Profile"
-        user = SQLiteManger.shared().getUserFromDB(email: UserDefultsManger.shared().email)
+        setup()
     }
     override func viewWillAppear(_ animated: Bool) {
         setUserData()
@@ -36,7 +34,7 @@ class ProfileVC: UITableViewController {
     
     // MARK: - Actions.
     @IBAction func logOutBtnTapped(_ sender: UIButton) {
-        UserDefaults.standard.set(false, forKey: "isLoged")
+        UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogedIn)
         goToSignInVC()
     }
 }
@@ -68,5 +66,10 @@ extension ProfileVC {
         let signInVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.signInVC ) as! SignInVC
         self.navigationController?.viewControllers = [signInVC, self]
         self.navigationController?.popViewController(animated: true)
+    }
+    private func setup(){
+        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLogedIn)
+        title = ViewControllerTitle.profile
+        user = SQLiteManger.shared().getUserFromDB(email: UserDefultsManger.shared().email)
     }
 }
