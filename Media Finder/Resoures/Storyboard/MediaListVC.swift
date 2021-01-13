@@ -8,7 +8,6 @@
 
 import UIKit
 import AVKit
-import SDWebImage
 
 class MediaListVC: UIViewController {
     
@@ -23,7 +22,6 @@ class MediaListVC: UIViewController {
     var mediaType: MediaType = .all
     var mediaKind = MediaType.all.rawValue
     let email = UserDefultsManger.shared().email
-    var image: UIView!
     
     // MARK: - Lifecycle Methods.
     override func viewDidLoad() {
@@ -99,7 +97,7 @@ extension MediaListVC {
     }
     private func getMediaFromDB(){
         if let data = SQLiteManger.shared().getMediaDataFromDB(email: email)?.0 {
-            if let media = Coder.decodMedia(userData: data){
+            if let media = CoderManger.shared().decodMedia(userData: data){
                 if let type = SQLiteManger.shared().getMediaDataFromDB(email: email)?.1 {
                     mediaArr = media
                     mediaKind = type
@@ -129,9 +127,9 @@ extension MediaListVC {
         tableView.rowHeight = UITableView.automaticDimension
     }
     @objc private func goToProvileVC(){
-        let sb = UIStoryboard(name: StoryBoard.main, bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: ViewController.profileVC ) as! ProfileVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
+        let profileVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.profileVC ) as! ProfileVC
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     private func bindData(term: String, media: String) {
         APIManager.getDataFromAPI(term: term, media: media) { (error, mediaData) in
@@ -139,7 +137,7 @@ extension MediaListVC {
                 print(error.localizedDescription)
             } else if let mediaData = mediaData {
                 self.mediaArr = mediaData
-                if let media = Coder.encodMedia(media: mediaData) {
+                if let media = CoderManger.shared().encodMedia(media: mediaData) {
                     if self.mediaArr.count > 0 {
                         SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media,
                                                                  type: self.mediaType.rawValue)
@@ -157,7 +155,6 @@ extension MediaListVC {
         let player = AVPlayer(url: url!)
         let vc = AVPlayerViewController()
         vc.player = player
-//        vc.contentOverlayView?.addSubview(image)
         present(vc, animated: true) {
             vc.player?.play()
         }
