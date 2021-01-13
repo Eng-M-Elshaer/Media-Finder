@@ -1,12 +1,11 @@
 //
-//  DatabaseManger.swift
-//  Guess Game
+//  SQLiteManger.swift
+//  Media Finder
 //
 //  Created by Mohamed Elshaer on 5/7/20.
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.
 //
 
-import Foundation
 import SQLite
 
 class SQLiteManger {
@@ -42,21 +41,17 @@ class SQLiteManger {
         }
     }
     func createUserTable(){
-        print("CREATEING USER TABLE")
         let createTable = self.usersTable.create { (table) in
             table.column(self.idData, primaryKey: true)
             table.column(self.userData)
         }
-        
         do {
             try self.database.run(createTable)
-            print("Created Table")
         } catch {
             print(error)
         }
     }
     func createMediaTable(){
-        print("CREATEING MEDIA TABLE")
         let createTable = self.mediaTable.create { (table) in
             table.column(self.emailData, primaryKey: true)
             table.column(self.mediaHistoryData)
@@ -65,37 +60,26 @@ class SQLiteManger {
         
         do {
             try self.database.run(createTable)
-            print("Created Table")
         } catch {
             print(error)
         }
     }
     func insertInUserTable(user: Data) {
-        print("INSERT TAPPED")
         let insertUser = self.usersTable.insert(self.userData <- user)
-        
         do {
             try self.database.run(insertUser)
-            print("INSERTED USER")
-            print(user, "XXXXXX DATA")
         } catch {
             print(error)
         }
     }
     func insertInMediaTable(email: String, mediaData: Data, type: String) {
-        print("REMOVE ALL")
         deleteMediaTable()
-        print("INSERT TAPPED")
-        
         let insertMedia = self.mediaTable.insert(self.emailData <- email,
                                                  self.mediaHistoryData <- mediaData,
                                                  self.mediaTypeData <- type
         )
-        
         do {
             try self.database.run(insertMedia)
-            print("INSERTED USER")
-            print(email, "XXXXXX DATA")
         } catch {
             print(error)
         }
@@ -103,23 +87,18 @@ class SQLiteManger {
     private func deleteMediaTable() {
         do {
             if try database.run(mediaTable.delete()) > 0 {
-                print("deleted Media")
             } else {
-                print("alice not found")
             }
         } catch {
-            print("delete failed: \(error)")
+            print(error)
         }
     }
     func getUsersFromDB() -> [Data]? {
         var usersData = [Data]()
         usersData.removeAll()
-        print("Get Data")
-        
         do {
             let users = try self.database.prepare(self.usersTable)
             for user in users {
-                print("ID: \(user[self.idData]), user data: \(user[self.userData])")
                 let data = user[self.userData]
                 usersData.append(contentsOf: [data])
             }
@@ -130,13 +109,11 @@ class SQLiteManger {
         return nil
     }
     func getUserFromDB(email: String) -> User? {
-        print("Get Data")
         do {
             let users = try self.database.prepare(self.usersTable)
             for user in users {
-                print("ID: \(user[self.idData]), user data: \(user[self.userData])")
                 let data = user[self.userData]
-                let decodUser = Coder.decodUser(userData: data)
+                let decodUser = CoderManger.shared().decodUser(userData: data)
                 if email == decodUser?.email {
                     return decodUser
                 }
@@ -147,11 +124,9 @@ class SQLiteManger {
         return nil
     }
     func getMediaDataFromDB(email: String) -> (Data, String)? {
-        print("Get Data Media")
         do {
             let medias = try self.database.prepare(self.mediaTable)
             for media in medias {
-                print("ID: \(media[self.emailData]), media data: \(media[self.mediaHistoryData])")
                 if email == media[self.emailData] {
                     let data = media[self.mediaHistoryData]
                     let type = media[self.mediaTypeData]

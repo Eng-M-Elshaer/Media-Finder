@@ -12,7 +12,6 @@ import Foundation
 struct UserDefaultsKeys {
     static let isLogedIn = "UDKisLogedIn"
     static let email = "UDKemail"
-    static let user = "UDKuser"
 }
 
 // MARK: - Storyboard.
@@ -44,7 +43,6 @@ struct ParameterKey {
 struct SQL {
     static let usersTable = "users"
     static let mediaTable = "media"
-    
     static let idData = "id"
     static let userData = "userData"
     static let emailData = "email"
@@ -65,6 +63,7 @@ struct AlertTitle {
 // MARK: - Images.
 struct Images {
     static let user = "user"
+    static let placeholder = "placeholder.png"
 }
 
 // MARK: - AlertMessage.
@@ -80,8 +79,9 @@ struct AlertMessage {
     static let invalidEmailOrPassword = "Invalid Email Or Password"
 }
 
-
+// MARK: - ViewControllerTitle.
 struct ViewControllerTitle {
     static let profile = "Profile"
     static let mediaList = "Media List"
+    static let signIn = "Sign In"
 }

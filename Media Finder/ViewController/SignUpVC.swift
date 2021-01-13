@@ -1,6 +1,6 @@
 //
 //  SignUpVC.swift
-//  Authentication Module
+//  Media Finder
 //
 //  Created by Mohamed Elshaer on 5/25/20.
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.
@@ -137,7 +137,7 @@ extension SignUpVC {
     private func signUpTapped(){
         if isVaildData() {
             if isValidRegax() {
-                if let user = Coder.encodUser(user: getUser()) {
+                if let user = CoderManger.shared().encodUser(user: getUser()) {
                     SQLiteManger.shared().insertInUserTable(user: user)
                 }
                 goToSignInVC()

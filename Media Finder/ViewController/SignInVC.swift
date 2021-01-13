@@ -1,6 +1,6 @@
 //
 //  SignInVC.swift
-//  Authentication Module
+//  Media Finder
 //
 //  Created by Mohamed Elshaer on 5/25/20.
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.
@@ -17,12 +17,14 @@ class SignInVC: UIViewController {
     // MARK: - Lifecycle Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogedIn)
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+        title = ViewControllerTitle.signIn
+        self.navigationItem.setHidesBackButton(true, animated:true)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.setHidesBackButton(false, animated:true)
     }
     
     // MARK: - Actions.
@@ -62,7 +64,8 @@ extension SignInVC {
     private func goToSignUpVC(){
         let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
         let signUpVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.signUpVC ) as! SignUpVC
-        self.navigationController?.pushViewController(signUpVC, animated: true)
+        self.navigationController?.viewControllers = [signUpVC, self]
+        self.navigationController?.popViewController(animated: true)
     }
     private func signInTapped(){
         if isVaildData() {

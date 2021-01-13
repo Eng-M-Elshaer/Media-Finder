@@ -1,5 +1,5 @@
 //
-//  UIViewController+Encode.swift
+//  CoderManger.swift
 //  Media Finder
 //
 //  Created by Mohamed Elshaer on 6/15/20.
@@ -8,30 +8,37 @@
 
 import UIKit
 
-struct Coder {
-    static func encodUser(user: User) -> Data? {
-        let encoder = JSONEncoder()
+class CoderManger {
+    // MARK:- Singleton
+    private static let sharedInstance = CoderManger()
+    
+    class func shared() -> CoderManger {
+        return CoderManger.sharedInstance
+    }
+    
+    // MARK:- Properties
+    let encoder = JSONEncoder()
+    let decoder = JSONDecoder()
+
+    func encodUser(user: User) -> Data? {
         if let encoded = try? encoder.encode(user) {
             return encoded
         }
         return nil
     }
-    static func decodUser(userData: Data) -> User? {
-        let decoder = JSONDecoder()
+    func decodUser(userData: Data) -> User? {
         if let loadedUser = try? decoder.decode(User.self, from: userData) {
             return loadedUser
         }
         return nil
     }
-    static func encodMedia(media: [Media]) -> Data? {
-        let encoder = JSONEncoder()
+    func encodMedia(media: [Media]) -> Data? {
         if let encoded = try? encoder.encode(media) {
             return encoded
         }
         return nil
     }
-    static func decodMedia(userData: Data) -> [Media]? {
-        let decoder = JSONDecoder()
+    func decodMedia(userData: Data) -> [Media]? {
         if let loadedMedia = try? decoder.decode([Media].self, from: userData) {
             return loadedMedia
         }

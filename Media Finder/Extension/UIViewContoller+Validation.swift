@@ -1,6 +1,6 @@
 //
-//  UIViewContoller + Validation.swift
-//  Authentication Module
+//  UIViewContoller+Validation.swift
+//  Media Finder
 //
 //  Created by Mohamed Elshaer on 5/25/20.
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.

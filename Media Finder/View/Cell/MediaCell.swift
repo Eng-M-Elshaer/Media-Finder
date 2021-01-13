@@ -19,16 +19,13 @@ class MediaCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     // MARK:- Public Methods
     func configCell(type: MediaType, media: Media){
-        
-        artWorkImageView.sd_setImage(with: URL(string: media.artworkUrl), placeholderImage: UIImage(named: "placeholder.png"))
-        
+        artWorkImageView.sd_setImage(with: URL(string: media.artworkUrl), placeholderImage: UIImage(named: Images.placeholder))
         switch type {
         case .movie:
             titleLabel.text = media.trackName

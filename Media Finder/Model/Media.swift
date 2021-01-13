@@ -10,6 +10,7 @@ import Foundation
 
 // MARK:- Media
 struct Media: Codable {
+    
     var artistName: String?
     var trackName: String?
     var artworkUrl: String!

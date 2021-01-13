@@ -1,6 +1,6 @@
 //
 //  MapVC.swift
-//  Authentication Module
+//  Media Finder
 //
 //  Created by Mohamed Elshaer on 5/25/20.
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.
@@ -21,8 +21,8 @@ class MapVC: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
-    var delegate: MapDelegate?
     lazy var geocoder = CLGeocoder()
+    var delegate: MapDelegate?
     var tag = 0
 
     // MARK: - LifeCycle Methods.

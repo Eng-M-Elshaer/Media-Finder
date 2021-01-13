@@ -1,6 +1,6 @@
 //
 //  CLPlacemark+Compact.swift
-//  Authentication Module
+//  Media Finder
 //
 //  Created by Mohamed Elshaer on 6/9/20.
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.

@@ -1,19 +1,18 @@
 //
 //  APIManager.swift
-//  NetworkingDemo
+//  Media Finder
 //
-//  Created by IDEAcademy on 3/17/20.
-//  Copyright © 2020 IDEAcademy. All rights reserved.
+//  Created by Mohamed Elshaer on 5/7/20.
+//  Copyright © 2020 Mohamed Elshaer. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 
 class APIManager {
     
-    class func getDataFromAPI(term:String, media:String, completion: @escaping (_ error: Error?, _ movies: [Media]?) -> Void) {
+    class func getDataFromAPI(term: String, media: String, completion: @escaping (_ error: Error?, _ movies: [Media]?) -> Void) {
         
-        let params = [ ParameterKey.term : term , ParameterKey.media : media ]
+        let params = [ParameterKey.term: term, ParameterKey.media: media]
         
         Alamofire.request(Urls.base, method: HTTPMethod.get, parameters: params, encoding: URLEncoding.default, headers: nil).response { response in
             guard response.error == nil else {
