@@ -35,6 +35,11 @@ class MediaListVC: UIViewController {
     
     // MARK: - Actions.
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
+        guard let searchText = searchBar.text, searchText != "" else {
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterData)
+            setSegmanet()
+            return
+        }
         segmentedChangedAction(sender)
     }
 }
@@ -77,9 +82,20 @@ extension MediaListVC: UITableViewDelegate {
 
 // MARK: - Search Bar.
 extension MediaListVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        bindData(term: searchText, media: mediaType.rawValue)
-        tableView.reloadData()
+    ///For get the data when the user just type
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText.count >= 3 {
+//            bindData(term: searchText, media: mediaType.rawValue)
+//            tableView.reloadData()
+//        }
+//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if searchBar.text?.count ?? 0 >= 3 {
+            bindData(term: searchBar.text!, media: mediaType.rawValue)
+        } else {
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.dataNeed)
+        }
     }
 }
 
@@ -132,6 +148,7 @@ extension MediaListVC {
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
     private func bindData(term: String, media: String) {
+        self.view.showLoader()
         APIManager.getDataFromAPI(term: term, media: media) { (error, mediaData) in
             if let error = error {
                 print(error.localizedDescription)
@@ -143,6 +160,7 @@ extension MediaListVC {
                                                                  type: self.mediaType.rawValue)
                     }
                 }
+                self.view.hideLoader()
                 self.tableView.reloadData()
             }
         }
@@ -176,9 +194,6 @@ extension MediaListVC {
         default:
             self.mediaType = .all
         }
-        guard let searchText = searchBar.text, searchText != "" else {
-            return
-        }
-        bindData(term: searchText, media: mediaType.rawValue)
+        bindData(term: searchBar.text!, media: mediaType.rawValue)
     }
 }

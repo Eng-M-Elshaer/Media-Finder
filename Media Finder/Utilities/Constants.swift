@@ -26,6 +26,7 @@ struct ViewController {
     static let signInVC = "SignInVC"
     static let profileVC = "ProfileVC"
     static let mediaListVC = "MediaListVC"
+    static let mapCenterVC = "MapCenterVC"
 }
 
 // MARK: - URL.
@@ -77,6 +78,8 @@ struct AlertMessage {
     static let vaildPassword = "Please Enter Vaild Password \n need to be: \n at least one uppercase \n at least one digit \n at least one lowercase \n 8 characters total"
     static let vaildPhone = "Enter Vaild Phone Number: \n Example: 01000000000"
     static let invalidEmailOrPassword = "Invalid Email Or Password"
+    static let enterData = "Please Enter Data First"
+    static let dataNeed = "Data Need To Be 3 Or More Letters"
 }
 
 // MARK: - ViewControllerTitle.
