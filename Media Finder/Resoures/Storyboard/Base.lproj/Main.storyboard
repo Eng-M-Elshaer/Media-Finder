@@ -885,7 +885,7 @@
         <!--Map CenterVC-->
         <scene sceneID="MSQ-XY-LIv">
             <objects>
-                <viewController storyboardIdentifier="MapCenterVC" id="p1e-t7-IeR" customClass="MapCenterVC" customModule="Authentication_Module" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapCenterVC" id="p1e-t7-IeR" customClass="MapCenterVC" customModule="Media_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sjx-U1-iBo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -951,6 +951,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBd-lC-ZWO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4993" y="1341"/>
+        </scene>
+        <!--Map With Current LocationVC-->
+        <scene sceneID="lZa-CY-x2j">
+            <objects>
+                <viewController storyboardIdentifier="MapWithCurrentLocationVC" id="75V-Lb-YVh" customClass="MapWithCurrentLocationVC" customModule="Authentication_Module" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pYL-0g-MaA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="W56-py-Iw3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <outlet property="delegate" destination="75V-Lb-YVh" id="Nwg-5i-MJ7"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-px-EOa">
+                                <rect key="frame" x="20" y="806" width="374" height="36"/>
+                                <color key="backgroundColor" red="0.76067807330000003" green="0.49789310279999999" blue="0.79895701139999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitUserAddressBtnTapped:" destination="75V-Lb-YVh" eventType="touchUpInside" id="oJ1-Nz-J9T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8m-ok-Ccr">
+                                <rect key="frame" x="20" y="84" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uks-a6-kqu">
+                                <rect key="frame" x="187" y="427.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="RZv-Ac-syM"/>
+                                    <constraint firstAttribute="height" constant="40" id="fNP-jX-Er6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eUj-3X-uwS"/>
+                        <color key="backgroundColor" red="0.76078431369999999" green="0.49803921569999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uks-a6-kqu" firstAttribute="centerY" secondItem="pYL-0g-MaA" secondAttribute="centerY" id="E91-xg-kvo"/>
+                            <constraint firstItem="uks-a6-kqu" firstAttribute="centerX" secondItem="pYL-0g-MaA" secondAttribute="centerX" id="IV7-QM-i63"/>
+                            <constraint firstItem="eUj-3X-uwS" firstAttribute="trailing" secondItem="dzM-px-EOa" secondAttribute="trailing" constant="20" id="Jox-dQ-jyW"/>
+                            <constraint firstItem="dzM-px-EOa" firstAttribute="leading" secondItem="eUj-3X-uwS" secondAttribute="leading" constant="20" id="Jro-f3-Y84"/>
+                            <constraint firstItem="eUj-3X-uwS" firstAttribute="trailing" secondItem="d8m-ok-Ccr" secondAttribute="trailing" constant="20" id="MxG-yq-dfv"/>
+                            <constraint firstItem="W56-py-Iw3" firstAttribute="top" secondItem="pYL-0g-MaA" secondAttribute="top" id="PUv-0Z-w1p"/>
+                            <constraint firstAttribute="bottom" secondItem="W56-py-Iw3" secondAttribute="bottom" id="QQ7-U4-XUJ"/>
+                            <constraint firstItem="d8m-ok-Ccr" firstAttribute="top" secondItem="eUj-3X-uwS" secondAttribute="top" constant="40" id="ZDx-uu-DEm"/>
+                            <constraint firstItem="eUj-3X-uwS" firstAttribute="bottom" secondItem="dzM-px-EOa" secondAttribute="bottom" constant="20" id="sCO-mV-HH7"/>
+                            <constraint firstItem="W56-py-Iw3" firstAttribute="trailing" secondItem="eUj-3X-uwS" secondAttribute="trailing" id="tLZ-ih-auV"/>
+                            <constraint firstItem="W56-py-Iw3" firstAttribute="leading" secondItem="eUj-3X-uwS" secondAttribute="leading" id="wYD-0t-2BF"/>
+                            <constraint firstItem="d8m-ok-Ccr" firstAttribute="leading" secondItem="eUj-3X-uwS" secondAttribute="leading" constant="20" id="xqi-WS-1QM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="W56-py-Iw3" id="L8k-rs-y04"/>
+                        <outlet property="userLocationLabel" destination="d8m-ok-Ccr" id="HCz-BT-F7e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5qk-7M-hGk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4993" y="2019"/>
         </scene>
     </scenes>
     <resources>
