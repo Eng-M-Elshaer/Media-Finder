@@ -155,7 +155,6 @@ extension SignUpVC {
     }
     private func addressTapped(_ sender: UIButton){
         let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
-//        let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapVC) as! MapVC
         let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapWithCurrentLocationVC) as! MapWithCurrentLocationVC
         mapVC.delegate = self
         mapVC.tag = sender.tag
