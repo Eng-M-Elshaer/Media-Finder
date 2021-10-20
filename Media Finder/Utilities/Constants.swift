@@ -27,6 +27,7 @@ struct ViewController {
     static let profileVC = "ProfileVC"
     static let mediaListVC = "MediaListVC"
     static let mapCenterVC = "MapCenterVC"
+    static let mapWithCurrentLocationVC = "MapWithCurrentLocationVC"
 }
 
 // MARK: - URL.

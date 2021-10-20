@@ -70,12 +70,16 @@ extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 //        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
 //    }
 //}
-extension SignUpVC: MapCenterDelegate {
+//extension SignUpVC: MapCenterDelegate {
+//    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
+//        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
+//    }
+//}
+extension SignUpVC: MapWithCurrentLocationDelegate {
     func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
         setDelailLocation(delailsAddress: delailsAddress, tag: tag)
     }
 }
-
 // MARK: - Table view data source
 extension SignUpVC {
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -152,7 +156,7 @@ extension SignUpVC {
     private func addressTapped(_ sender: UIButton){
         let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
 //        let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapVC) as! MapVC
-        let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapCenterVC) as! MapCenterVC
+        let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapWithCurrentLocationVC) as! MapWithCurrentLocationVC
         mapVC.delegate = self
         mapVC.tag = sender.tag
         self.navigationController?.pushViewController(mapVC, animated: true)

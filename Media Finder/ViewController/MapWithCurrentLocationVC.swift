@@ -1,6 +1,6 @@
 //
 //  MapWithCurrentLocationVC.swift
-//  Authentication Module
+//  Media Finder
 //
 //  Created by Mohamed Elshaer on 19/10/2021.
 //  Copyright © 2021 Mohamed Elshaer. All rights reserved.
@@ -30,6 +30,7 @@ class MapWithCurrentLocationVC: UIViewController {
     //MARK:- Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         checkLocationServices()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -123,7 +124,7 @@ extension MapWithCurrentLocationVC: MKMapViewDelegate {
                 delegate?.setDelailLocationInAddress(delailsAddress: placemark.compactAddress ?? "N/A", tag: tag)
             } else {
                 userLocationLabel.text = "No Matching Addresses Found"
-                delegate?.setDelailLocationInAddress(delailsAddress: "No Matching Addresses Found", tag: tag)
+                delegate?.setDelailLocationInAddress(delailsAddress: "No Matching Addresses Found", tag: tag )
             }
         }
     }
