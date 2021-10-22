@@ -24,6 +24,7 @@ class MapWithCurrentLocationVC: UIViewController {
     private let locationManager = CLLocationManager()
     private let regionInMeters: Double = 10000
     private var previuosLocation: CLLocation?
+    private var userLocation = ""
     var delegate: MapWithCurrentLocationDelegate?
     var tag = 0
     
@@ -42,6 +43,7 @@ class MapWithCurrentLocationVC: UIViewController {
     
     //MARK:- Actions
     @IBAction func submitUserAddressBtnTapped(_ sender: UIButton) {
+        delegate?.setDelailLocationInAddress(delailsAddress: userLocation, tag: tag)
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -121,10 +123,10 @@ extension MapWithCurrentLocationVC: MKMapViewDelegate {
         } else {
             if let placemarks = placemarks, let placemark = placemarks.first {
                 userLocationLabel.text = placemark.compactAddress ?? ""
-                delegate?.setDelailLocationInAddress(delailsAddress: placemark.compactAddress ?? "N/A", tag: tag)
+                userLocation = placemark.compactAddress ?? ""
             } else {
                 userLocationLabel.text = "No Matching Addresses Found"
-                delegate?.setDelailLocationInAddress(delailsAddress: "No Matching Addresses Found", tag: tag )
+                userLocation = "No Matching Addresses Found"
             }
         }
     }

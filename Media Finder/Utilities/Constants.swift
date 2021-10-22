@@ -28,6 +28,7 @@ struct ViewController {
     static let mediaListVC = "MediaListVC"
     static let mapCenterVC = "MapCenterVC"
     static let mapWithCurrentLocationVC = "MapWithCurrentLocationVC"
+    static let mapScreenVC = "MapScreenVC"
 }
 
 // MARK: - URL.
