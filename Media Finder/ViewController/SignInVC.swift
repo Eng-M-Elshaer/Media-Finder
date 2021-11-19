@@ -69,11 +69,13 @@ extension SignInVC {
     }
     private func signInTapped(){
         if isVaildData() {
-            if isValidEmail(email: emailTextField.text) && isValidPassword(testStr: passwordTextField.text){
-                let user = SQLiteManger.shared().getUserFromDB(email: emailTextField.text!)
-                if isUserDataVaild(user: user!) {
-                    UserDefultsManger.shared().email = emailTextField.text!
-                    goToMediaVC()
+            if Validtor.shared().isValidEmail(email: emailTextField.text!){
+                if Validtor.shared().isValidPassword(password: passwordTextField.text!) {
+                    let user = SQLiteManger.shared().getUserFromDB(email: emailTextField.text!)
+                    if isUserDataVaild(user: user!) {
+                        UserDefultsManger.shared().email = emailTextField.text!
+                        goToMediaVC()
+                    }
                 }
             }
         }

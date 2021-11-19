@@ -16,6 +16,7 @@
 		E2132524249285EB00493E53 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2132522249285EB00493E53 /* MediaCell.swift */; };
 		E2132525249285EB00493E53 /* MediaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2132523249285EB00493E53 /* MediaCell.xib */; };
 		E23C6E902496548D0047457F /* SQLiteManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C6E8F2496548D0047457F /* SQLiteManger.swift */; };
+		E251B84F27480B07002CF3DF /* Validtor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251B84E27480B07002CF3DF /* Validtor.swift */; };
 		E253ED93257826AE00537075 /* MediaListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E253ED92257826AE00537075 /* MediaListVC.swift */; };
 		E260229D248F984B00519D7E /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260229A248F984B00519D7E /* SignInVC.swift */; };
 		E260229E248F984B00519D7E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260229B248F984B00519D7E /* MapVC.swift */; };
@@ -28,7 +29,6 @@
 		E2E045C4247BF80D002644F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E045C2247BF80D002644F4 /* LaunchScreen.storyboard */; };
 		E2E045CE247BF877002644F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E045CD247BF877002644F4 /* User.swift */; };
 		E2E045D8247C085D002644F4 /* UserDefultsManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E045D7247C085D002644F4 /* UserDefultsManger.swift */; };
-		E2E045DA247C09FB002644F4 /* UIViewContoller+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E045D9247C09FB002644F4 /* UIViewContoller+Validation.swift */; };
 		E2E045E2247C136A002644F4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E045E1247C136A002644F4 /* ProfileVC.swift */; };
 		E2E045E4247C1BF7002644F4 /* String+Trimed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E045E3247C1BF7002644F4 /* String+Trimed.swift */; };
 		E2E045E6247C1D64002644F4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E045E5247C1D64002644F4 /* UIViewController+Alert.swift */; };
@@ -49,6 +49,7 @@
 		E2132522249285EB00493E53 /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		E2132523249285EB00493E53 /* MediaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCell.xib; sourceTree = "<group>"; };
 		E23C6E8F2496548D0047457F /* SQLiteManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManger.swift; sourceTree = "<group>"; };
+		E251B84E27480B07002CF3DF /* Validtor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validtor.swift; sourceTree = "<group>"; };
 		E253ED92257826AE00537075 /* MediaListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaListVC.swift; path = "Media Finder/Resoures/StoryBoard/MediaListVC.swift"; sourceTree = SOURCE_ROOT; };
 		E260229A248F984B00519D7E /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		E260229B248F984B00519D7E /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		E2E045C5247BF80D002644F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E045CD247BF877002644F4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2E045D7247C085D002644F4 /* UserDefultsManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefultsManger.swift; sourceTree = "<group>"; };
-		E2E045D9247C09FB002644F4 /* UIViewContoller+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+Validation.swift"; sourceTree = "<group>"; };
 		E2E045E1247C136A002644F4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = SOURCE_ROOT; };
 		E2E045E3247C1BF7002644F4 /* String+Trimed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Trimed.swift"; sourceTree = "<group>"; };
 		E2E045E5247C1D64002644F4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -154,6 +154,7 @@
 				E29590782497B81300F1D0D6 /* CoderManger.swift */,
 				E2E045D7247C085D002644F4 /* UserDefultsManger.swift */,
 				E2132518249277E800493E53 /* APIManager.swift */,
+				E251B84E27480B07002CF3DF /* Validtor.swift */,
 			);
 			path = Manger;
 			sourceTree = "<group>";
@@ -239,7 +240,6 @@
 			children = (
 				E28C457425B0D05300E92392 /* UIView+Loader.swift */,
 				E21325122492751500493E53 /* CLPlacemark+CompactAddress.swift */,
-				E2E045D9247C09FB002644F4 /* UIViewContoller+Validation.swift */,
 				E2E045E5247C1D64002644F4 /* UIViewController+Alert.swift */,
 				E2E045E3247C1BF7002644F4 /* String+Trimed.swift */,
 			);
@@ -369,6 +369,7 @@
 				E21325152492773500493E53 /* MediaResponse.swift in Sources */,
 				E21325172492774800493E53 /* Media.swift in Sources */,
 				E2F0FF072722E070006F25D0 /* MapScreenVC.swift in Sources */,
+				E251B84F27480B07002CF3DF /* Validtor.swift in Sources */,
 				E253ED93257826AE00537075 /* MediaListVC.swift in Sources */,
 				E2132524249285EB00493E53 /* MediaCell.swift in Sources */,
 				E2E045E4247C1BF7002644F4 /* String+Trimed.swift in Sources */,
@@ -379,7 +380,6 @@
 				E2E045E2247C136A002644F4 /* ProfileVC.swift in Sources */,
 				E2E045CE247BF877002644F4 /* User.swift in Sources */,
 				E2F0FEF6271CCC65006F25D0 /* MapCenterVC.swift in Sources */,
-				E2E045DA247C09FB002644F4 /* UIViewContoller+Validation.swift in Sources */,
 				E2F0FEFE272049B5006F25D0 /* MapWithCurrentLocationVC.swift in Sources */,
 				E260229E248F984B00519D7E /* MapVC.swift in Sources */,
 				E23C6E902496548D0047457F /* SQLiteManger.swift in Sources */,

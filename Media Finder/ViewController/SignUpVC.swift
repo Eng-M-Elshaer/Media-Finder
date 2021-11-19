@@ -105,15 +105,15 @@ extension SignUpVC {
         return true
     }
     private func isValidRegax() -> Bool {
-        guard isValidEmail(email: userEmailTextField.text?.trimmed) else {
+        guard Validtor.shared().isValidEmail(email: userEmailTextField.text!.trimmed) else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.vaildEmail)
             return false
         }
-        guard isValidPassword(testStr: userPasswordTextField.text) else {
+        guard Validtor.shared().isValidPassword(password: userPasswordTextField.text!) else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.vaildPassword)
             return false
         }
-        guard isValidPhone(number: userPhoneTextField.text?.trimmed) else {
+        guard Validtor.shared().isValidPhone(number: userPhoneTextField.text?.trimmed) else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.vaildPhone)
             return false
         }
