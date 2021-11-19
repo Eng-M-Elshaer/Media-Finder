@@ -15,7 +15,7 @@ protocol MapScreenVCDelegate: AnyObject {
 }
 
 class MapScreenVC: UIViewController {
-
+    
     //MARK:- Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var userLocationLabel: UILabel!
@@ -80,13 +80,8 @@ extension MapScreenVC {
             if let erorr = erorr {
                 print("erorr is \(erorr.localizedDescription)")
             }else if let firstPlaceMarks = placeMarks?.first {
-                if let country = firstPlaceMarks.country,
-                   let city = firstPlaceMarks.locality,
-                   let region = firstPlaceMarks.subLocality,
-                   let street = firstPlaceMarks.thoroughfare {
-                    let detailsAddress = "\(country), \(city), \(region), \(street)"
-                    self.userLocationLabel.text = detailsAddress
-                }
+                let detailsAddress = firstPlaceMarks.compactAddress
+                self.userLocationLabel.text = detailsAddress
             }
         }
     }
