@@ -19,11 +19,11 @@ class SQLiteManger {
     
     // MARK:- Properties
     private var database: Connection!
-    
+    // User Table Columes
     private let usersTable = Table(SQL.usersTable)
     private let idData = Expression<Int>(SQL.idData)
     private let userData = Expression<Data>(SQL.userData)
-    
+    // Media Table Columes
     private let mediaTable = Table(SQL.mediaTable)
     private let emailData = Expression<String>(SQL.emailData)
     private let mediaHistoryData = Expression<Data>(SQL.mediaHistoryData)
