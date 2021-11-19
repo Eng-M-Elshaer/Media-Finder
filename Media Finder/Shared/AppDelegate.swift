@@ -60,7 +60,5 @@ extension AppDelegate {
     private func setupSQL(){
         SQLiteManger.shared().setDatabaseTable(tableName: SQL.mediaTable)
         SQLiteManger.shared().setDatabaseTable(tableName: SQL.usersTable)
-        SQLiteManger.shared().createUserTable()
-        SQLiteManger.shared().createMediaTable()
     }
 }

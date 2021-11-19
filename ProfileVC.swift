@@ -21,7 +21,7 @@ class ProfileVC: UITableViewController {
     @IBOutlet weak var userAddressThreeLabel: UILabel!
     
     // MARK:- Properties
-    var user: User!
+    private var user: User!
     
     // MARK: - Lifecyclye Methods.
     override func viewDidLoad() {
@@ -69,6 +69,7 @@ extension ProfileVC {
     private func setup(){
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLogedIn)
         title = ViewControllerTitle.profile
-        user = SQLiteManger.shared().getUserFromDB(email: UserDefultsManger.shared().email)
+        let email = UserDefultsManger.shared().email
+        user = SQLiteManger.shared().getUserFromDB(email: email)
     }
 }

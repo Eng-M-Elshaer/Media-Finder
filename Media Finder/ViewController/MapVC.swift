@@ -11,7 +11,7 @@ import MapKit
 
 // MARK: - MapDelegate Protocol.
 protocol MapDelegate {
-    func setDelailLocationInAddress(delailsAddress: String,tag:Int)
+    func setDelailLocationInAddress(delailsAddress: String, tag: Int)
 }
 
 class MapVC: UIViewController {
@@ -21,7 +21,6 @@ class MapVC: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
-    lazy var geocoder = CLGeocoder()
     var delegate: MapDelegate?
     var tag = 0
 
@@ -58,6 +57,7 @@ extension MapVC {
         getNameOfLocation(lat: coordinate.latitude, long: coordinate.longitude)
     }
     private func getNameOfLocation(lat: CLLocationDegrees, long: CLLocationDegrees) {
+        let geocoder = CLGeocoder()
         let location = CLLocation(latitude: lat, longitude: long)
         // Geocode Location
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in

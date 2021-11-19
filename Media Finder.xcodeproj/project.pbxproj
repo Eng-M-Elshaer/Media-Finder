@@ -194,8 +194,8 @@
 				E2E045CF247BF882002644F4 /* Model */,
 				E2E045CB247BF846002644F4 /* View */,
 				E2E045CC247BF84D002644F4 /* ViewController */,
-				E2E045D6247C07B2002644F4 /* Extension */,
 				E2B29FCD248D455800F4619E /* Resoures */,
+				E2E045D6247C07B2002644F4 /* Extension */,
 				E2E045C5247BF80D002644F4 /* Info.plist */,
 			);
 			path = "Media Finder";
@@ -215,11 +215,11 @@
 				E260229C248F984B00519D7E /* SignUpVC.swift */,
 				E260229B248F984B00519D7E /* MapVC.swift */,
 				E2F0FEF5271CCC65006F25D0 /* MapCenterVC.swift */,
+				E2F0FF062722E070006F25D0 /* MapScreenVC.swift */,
 				E2F0FEFD272049B5006F25D0 /* MapWithCurrentLocationVC.swift */,
 				E260229A248F984B00519D7E /* SignInVC.swift */,
 				E253ED92257826AE00537075 /* MediaListVC.swift */,
 				E2E045E1247C136A002644F4 /* ProfileVC.swift */,
-				E2F0FF062722E070006F25D0 /* MapScreenVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

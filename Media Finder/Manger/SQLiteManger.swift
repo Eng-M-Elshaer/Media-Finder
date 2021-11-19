@@ -41,7 +41,7 @@ class SQLiteManger {
         }
     }
     func createUserTable(){
-        let createTable = self.usersTable.create { (table) in
+        let createTable = self.usersTable.create { table in
             table.column(self.idData, primaryKey: true)
             table.column(self.userData)
         }
@@ -52,12 +52,11 @@ class SQLiteManger {
         }
     }
     func createMediaTable(){
-        let createTable = self.mediaTable.create { (table) in
+        let createTable = self.mediaTable.create { table in
             table.column(self.emailData, primaryKey: true)
             table.column(self.mediaHistoryData)
             table.column(self.mediaTypeData)
         }
-        
         do {
             try self.database.run(createTable)
         } catch {

@@ -22,9 +22,9 @@ class SignUpVC: UITableViewController {
     @IBOutlet weak var userAddressThreeTextField: UITextField!
     
     // MARK: - Properties
-    var user: User!
-    var gender: Gender = .female
-    let imagePicker = UIImagePickerController()
+    private var user: User!
+    private var gender: Gender = .female
+    private let imagePicker = UIImagePickerController()
     
     // MARK: - Lifecycle Mehtods.
     override func viewDidLoad() {
@@ -64,22 +64,6 @@ extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
     }
 }
 
-// MARK: - MapCenterDelegate Extension.
-//extension SignUpVC: MapDelegate {
-//    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
-//        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
-//    }
-//}
-//extension SignUpVC: MapCenterDelegate {
-//    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
-//        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
-//    }
-//}
-extension SignUpVC: MapWithCurrentLocationDelegate {
-    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
-        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
-    }
-}
 // MARK: - Table view data source
 extension SignUpVC {
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -102,19 +86,19 @@ extension SignUpVC {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.choosePhoto)
             return false
         }
-        guard (userEmailTextField.text?.trimmed) != "" else {
+        guard userEmailTextField.text?.trimmed != "" else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterEmail)
             return false
         }
-        guard (userPasswordTextField.text) != "" else {
+        guard userPasswordTextField.text != "" else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterPassword)
             return false
         }
-        guard (userPhoneTextField.text?.trimmed) != "" else {
+        guard userPhoneTextField.text?.trimmed != "" else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterPhone)
             return false
         }
-        guard (userAddressOneTextField.text?.trimmed) != "" else {
+        guard userAddressOneTextField.text?.trimmed != "" else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterAddress)
             return false
         }
@@ -136,10 +120,14 @@ extension SignUpVC {
         return true
     }
     private func getUser() -> User {
-        user = User(image: CodableImage(withImage: userImageView.image!), name: userNameTextField.text,
+        user = User(image: CodableImage(withImage: userImageView.image!),
+                    name: userNameTextField.text,
                     email: userEmailTextField.text,
-                    phone: userPhoneTextField.text, password: userPasswordTextField.text, gender: gender,
-                    addressOne: userAddressOneTextField.text, addressTwo: userAddressTwoTextField.text,
+                    phone: userPhoneTextField.text,
+                    password: userPasswordTextField.text,
+                    gender: gender,
+                    addressOne: userAddressOneTextField.text,
+                    addressTwo: userAddressTwoTextField.text,
                     addressThree: userAddressThreeTextField.text)
         return user
     }
@@ -185,5 +173,25 @@ extension SignUpVC {
     private func setup(){
         imagePicker.delegate = self
         userImageView.image = UIImage(named: Images.user)
+        SQLiteManger.shared().createUserTable()
+        SQLiteManger.shared().createMediaTable()
     }
 }
+
+// MARK: - MapCenterDelegate Extension.
+extension SignUpVC: MapWithCurrentLocationDelegate {
+    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
+        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
+    }
+}
+
+//extension SignUpVC: MapDelegate {
+//    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
+//        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
+//    }
+//}
+//extension SignUpVC: MapCenterDelegate {
+//    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
+//        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
+//    }
+//}

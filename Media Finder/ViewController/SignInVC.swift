@@ -39,11 +39,11 @@ class SignInVC: UIViewController {
 // MARK: - Private Methods.
 extension SignInVC {
     private func isVaildData() -> Bool {
-        guard (emailTextField.text?.trimmed) != "" else {
+        guard emailTextField.text?.trimmed != "" else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterEmail)
             return false
         }
-        guard (passwordTextField.text) != "" else {
+        guard passwordTextField.text != "" else {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterPassword)
             return false
         }

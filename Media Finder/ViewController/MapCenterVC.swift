@@ -22,7 +22,6 @@ class MapCenterVC: UIViewController {
     
     // MARK:- Properties
     var delegate: MapCenterDelegate?
-    lazy var geocoder = CLGeocoder()
     var tag = 0
     
     // MARK: - Lifecycle Methods.
@@ -54,6 +53,7 @@ extension MapCenterVC: MKMapViewDelegate {
 // MARK: - MapCenterVC Extension.
 extension MapCenterVC {
     private func getNameOfLocation(lat:CLLocationDegrees,long:CLLocationDegrees) {
+        let geocoder = CLGeocoder()
         let location = CLLocation(latitude: lat, longitude: long)
         // Geocode Location
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in

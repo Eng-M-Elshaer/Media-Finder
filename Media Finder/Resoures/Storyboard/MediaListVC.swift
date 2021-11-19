@@ -18,10 +18,10 @@ class MediaListVC: UIViewController {
     @IBOutlet weak var noDataImageView: UIImageView!
     
     // MARK:- Properties
-    var mediaArr = [Media]()
-    var mediaType: MediaType = .all
-    var mediaKind = MediaType.all.rawValue
-    let email = UserDefultsManger.shared().email
+    private var mediaArr = [Media]()
+    private var mediaType: MediaType = .all
+    private var mediaKind = MediaType.all.rawValue
+    private let email = UserDefultsManger.shared().email
     
     // MARK: - Lifecycle Methods.
     override func viewDidLoad() {

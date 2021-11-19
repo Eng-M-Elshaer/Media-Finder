@@ -17,8 +17,8 @@ class CoderManger {
     }
     
     // MARK:- Properties
-    let encoder = JSONEncoder()
-    let decoder = JSONDecoder()
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
 
     func encodUser(user: User) -> Data? {
         if let encoded = try? encoder.encode(user) {
