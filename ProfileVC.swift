@@ -66,6 +66,13 @@ extension ProfileVC {
         self.navigationController?.viewControllers = [signInVC, self]
         self.navigationController?.popViewController(animated: true)
     }
+    private func logOut(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
+        appDelegate.swithToAuthState(mainStoryboard)
+    }
     private func setup(){
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLogedIn)
         title = ViewControllerTitle.profile

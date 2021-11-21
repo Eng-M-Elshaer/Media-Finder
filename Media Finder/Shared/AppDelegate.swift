@@ -12,13 +12,23 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    //MARK:- Propreties
     var window: UIWindow?
     
+    //MARK:- AppDelegate Methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setRootView()
         IQKeyboardManager.shared.enable = true
         setupSQL()
         return true
+    }
+    
+    //MARK:- Public Methods
+    func swithToAuthState(_ mainStoryboard: UIStoryboard){
+        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.signInVC) as! SignInVC
+        let navigationController = UINavigationController(rootViewController: rootVC)
+        setNavbar(navigationController: navigationController)
+        window?.rootViewController = navigationController
     }
 }
 
@@ -38,17 +48,10 @@ extension AppDelegate {
         setNavbar(navigationController: navigationController)
         window?.rootViewController = navigationController
     }
-    private func swithToAuthState(_ mainStoryboard: UIStoryboard){
-        let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.signInVC) as! SignInVC
-        let navigationController = UINavigationController(rootViewController: rootVC)
-        setNavbar(navigationController: navigationController)
-        window?.rootViewController = navigationController
-    }
     private func setRootView(){
         let userData = UserDefaults.standard.object(forKey: UserDefaultsKeys.isLogedIn)
         let isLoged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogedIn)
         let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
-        
         if userData != nil {
             if isLoged {
                swithToMainState(mainStoryboard)
