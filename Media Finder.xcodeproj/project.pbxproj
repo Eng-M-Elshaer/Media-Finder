@@ -189,6 +189,7 @@
 		E2E045B8247BF80B002644F4 /* Media Finder */ = {
 			isa = PBXGroup;
 			children = (
+				E2E045C5247BF80D002644F4 /* Info.plist */,
 				E23762B5259A165900FF24FA /* Shared */,
 				E2B29FCC248D454700F4619E /* Manger */,
 				E2132511249274CA00493E53 /* Utilities */,
@@ -197,7 +198,6 @@
 				E2E045CC247BF84D002644F4 /* Controller */,
 				E2B29FCD248D455800F4619E /* Resoures */,
 				E2E045D6247C07B2002644F4 /* Extension */,
-				E2E045C5247BF80D002644F4 /* Info.plist */,
 			);
 			path = "Media Finder";
 			sourceTree = "<group>";
