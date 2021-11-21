@@ -11,7 +11,7 @@ import Alamofire
 class APIManager {
     
     //MAKR:- Get Data From API
-    class func getDataFromAPI(term: String, media: String, completion: @escaping (_ error: Error?, _ movies: [Media]?) -> Void) {
+    class func getDataFromAPI(term: String, media: String, completion: @escaping (_ error: Error?, _ mediaArray: [Media]?) -> Void) {
         
         let params = [ParameterKey.term: term, ParameterKey.media: media]
         
@@ -30,7 +30,7 @@ class APIManager {
                 let mediaArr = try decoder.decode(MediaResponse.self, from: data).results
                 completion(nil, mediaArr)
             } catch let error {
-                print(error)
+                completion(error, nil)
             }
         }
     }

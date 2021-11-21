@@ -139,6 +139,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		E251B850274AC54B002CF3DF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E2132518249277E800493E53 /* APIManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		E253ED952578277700537075 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +161,6 @@
 				E23C6E8F2496548D0047457F /* SQLiteManger.swift */,
 				E29590782497B81300F1D0D6 /* CoderManger.swift */,
 				E2E045D7247C085D002644F4 /* UserDefultsManger.swift */,
-				E2132518249277E800493E53 /* APIManager.swift */,
 				E251B84E27480B07002CF3DF /* Validtor.swift */,
 			);
 			path = Manger;
@@ -191,6 +198,7 @@
 			children = (
 				E2E045C5247BF80D002644F4 /* Info.plist */,
 				E23762B5259A165900FF24FA /* Shared */,
+				E251B850274AC54B002CF3DF /* Networking */,
 				E2B29FCC248D454700F4619E /* Manger */,
 				E2132511249274CA00493E53 /* Utilities */,
 				E2E045CF247BF882002644F4 /* Model */,
