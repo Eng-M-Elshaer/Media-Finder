@@ -194,7 +194,7 @@
 				E2132511249274CA00493E53 /* Utilities */,
 				E2E045CF247BF882002644F4 /* Model */,
 				E2E045CB247BF846002644F4 /* View */,
-				E2E045CC247BF84D002644F4 /* ViewController */,
+				E2E045CC247BF84D002644F4 /* Controller */,
 				E2B29FCD248D455800F4619E /* Resoures */,
 				E2E045D6247C07B2002644F4 /* Extension */,
 				E2E045C5247BF80D002644F4 /* Info.plist */,
@@ -210,7 +210,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E2E045CC247BF84D002644F4 /* ViewController */ = {
+		E2E045CC247BF84D002644F4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				E260229C248F984B00519D7E /* SignUpVC.swift */,
@@ -222,7 +222,7 @@
 				E253ED92257826AE00537075 /* MediaListVC.swift */,
 				E2E045E1247C136A002644F4 /* ProfileVC.swift */,
 			);
-			path = ViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E2E045CF247BF882002644F4 /* Model */ = {

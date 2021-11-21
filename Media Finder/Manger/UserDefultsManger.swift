@@ -31,6 +31,17 @@ class UserDefultsManger {
             return defaults.bool(forKey: UserDefaultsKeys.isLogedIn )
         }
     }
+    var isOpenedBefore: Bool  {
+        set {
+            defaults.set(newValue, forKey: UserDefaultsKeys.isOpenedBefore )
+        }
+        get {
+            guard defaults.object(forKey: UserDefaultsKeys.isOpenedBefore ) != nil else {
+                return false
+            }
+            return defaults.bool(forKey: UserDefaultsKeys.isOpenedBefore )
+        }
+    }
     var email: String  {
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.email )

@@ -173,8 +173,7 @@ extension SignUpVC {
     private func setup(){
         imagePicker.delegate = self
         userImageView.image = UIImage(named: Images.user)
-        SQLiteManger.shared().createUserTable()
-        SQLiteManger.shared().createMediaTable()
+        UserDefultsManger.shared().isOpenedBefore = true
     }
 }
 

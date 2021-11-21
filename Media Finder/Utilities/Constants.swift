@@ -12,6 +12,7 @@ import Foundation
 struct UserDefaultsKeys {
     static let isLogedIn = "UDKisLogedIn"
     static let email = "UDKemail"
+    static let isOpenedBefore = "UDKisOpenedBefore"
 }
 
 // MARK: - Storyboard.
