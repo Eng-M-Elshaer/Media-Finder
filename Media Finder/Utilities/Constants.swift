@@ -59,15 +59,16 @@ struct CustomCell {
     static let mediaCell = "MediaCell"
 }
 
-// MARK: - AlertTitle.
-struct AlertTitle {
-    static let sorry = "Sorry"
-}
-
 // MARK: - Images.
 struct Images {
     static let user = "user"
     static let placeholder = "placeholder.png"
+}
+
+// MARK: - AlertTitle.
+struct AlertTitle {
+    static let sorry = "Sorry"
+    static let success = "Success"
 }
 
 // MARK: - AlertMessage.
@@ -81,8 +82,9 @@ struct AlertMessage {
     static let vaildPassword = "Please Enter Vaild Password \n need to be: \n at least one uppercase \n at least one digit \n at least one lowercase \n 8 characters total"
     static let vaildPhone = "Enter Vaild Phone Number: \n Example: 01000000000"
     static let invalidEmailOrPassword = "Invalid Email Or Password"
-    static let enterData = "Please Enter Data First"
+    static let enterData = "Please Enter Meida Name First"
     static let dataNeed = "Data Need To Be 3 Or More Letters"
+    static let createdSuccessfully = "Your Account Has Been Created Successfully"
 }
 
 // MARK: - ViewControllerTitle.

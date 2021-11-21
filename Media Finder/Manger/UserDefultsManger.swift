@@ -20,7 +20,7 @@ class UserDefultsManger {
     // MARK:- Properties
     private let defaults = UserDefaults.standard
     
-    var isLogedIn: Bool  {
+    var isLogedIn: Bool {
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.isLogedIn )
         }
@@ -31,7 +31,7 @@ class UserDefultsManger {
             return defaults.bool(forKey: UserDefaultsKeys.isLogedIn )
         }
     }
-    var isOpenedBefore: Bool  {
+    var isOpenedBefore: Bool {
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.isOpenedBefore )
         }
@@ -42,7 +42,7 @@ class UserDefultsManger {
             return defaults.bool(forKey: UserDefaultsKeys.isOpenedBefore )
         }
     }
-    var email: String  {
+    var email: String {
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.email )
         }

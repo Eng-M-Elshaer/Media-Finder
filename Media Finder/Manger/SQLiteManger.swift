@@ -29,41 +29,6 @@ class SQLiteManger {
     private let mediaHistoryData = Expression<Data>(SQL.mediaHistoryData)
     private let mediaTypeData = Expression<String>(SQL.mediaTypeData)
     
-    // MARK:- Private Methods
-    private func setDatabaseTable(tableName: String){
-        do {
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent(tableName).appendingPathExtension("sqlite3")
-            let database = try Connection(fileUrl.path)
-            self.database = database
-        } catch {
-            print(error)
-        }
-    }
-    private func createUserTable(){
-        let createTable = self.usersTable.create { table in
-            table.column(self.idData, primaryKey: true)
-            table.column(self.userData)
-        }
-        do {
-            try self.database.run(createTable)
-        } catch {
-            print(error)
-        }
-    }
-    private func createMediaTable(){
-        let createTable = self.mediaTable.create { table in
-            table.column(self.emailData, primaryKey: true)
-            table.column(self.mediaHistoryData)
-            table.column(self.mediaTypeData)
-        }
-        do {
-            try self.database.run(createTable)
-        } catch {
-            print(error)
-        }
-    }
-    
     // MARK:- Public Methods
     func setupDatabaseTables(){
         setDatabaseTable(tableName: SQL.usersTable)
@@ -146,5 +111,42 @@ class SQLiteManger {
             print(error)
         }
         return nil
+    }
+}
+
+// MARK:- Private Methods
+extension SQLiteManger {
+    private func setDatabaseTable(tableName: String){
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent(tableName).appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database = database
+        } catch {
+            print(error)
+        }
+    }
+    private func createUserTable(){
+        let createTable = self.usersTable.create { table in
+            table.column(self.idData, primaryKey: true)
+            table.column(self.userData)
+        }
+        do {
+            try self.database.run(createTable)
+        } catch {
+            print(error)
+        }
+    }
+    private func createMediaTable(){
+        let createTable = self.mediaTable.create { table in
+            table.column(self.emailData, primaryKey: true)
+            table.column(self.mediaHistoryData)
+            table.column(self.mediaTypeData)
+        }
+        do {
+            try self.database.run(createTable)
+        } catch {
+            print(error)
+        }
     }
 }

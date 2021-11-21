@@ -16,6 +16,7 @@ class MediaCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
     
+    // MARK:- Lifecyele Methods
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -25,7 +26,19 @@ class MediaCell: UITableViewCell {
     
     // MARK:- Public Methods
     func configCell(type: MediaType, media: Media){
-        artWorkImageView.sd_setImage(with: URL(string: media.artworkUrl), placeholderImage: UIImage(named: Images.placeholder))
+        setupCell(type: type, media: media)
+    }
+}
+
+extension MediaCell {
+    private func setupCell(type: MediaType, media: Media){
+        setupImageView(mediaUrl: media.artworkUrl)
+        setupCellData(type: type, media: media)
+    }
+    private func setupImageView(mediaUrl: String){
+        artWorkImageView.sd_setImage(with: URL(string: mediaUrl), placeholderImage: UIImage(named: Images.placeholder))
+    }
+    private func setupCellData(type: MediaType, media: Media){
         switch type {
         case .movie:
             titleLabel.text = media.trackName

@@ -20,6 +20,7 @@ class CoderManger {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
 
+    // MARK:- Public Methods
     func encodUser(user: User) -> Data? {
         if let encoded = try? encoder.encode(user) {
             return encoded
