@@ -58,12 +58,10 @@ extension AppDelegate {
         }
     }
     private func setupSQL(){
-        SQLiteManger.shared().setDatabaseTable(tableName: SQL.mediaTable)
-        SQLiteManger.shared().setDatabaseTable(tableName: SQL.usersTable)
+        SQLiteManger.shared().setupDatabaseTables()
         let isOpenedBefore = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isOpenedBefore)
         if !isOpenedBefore {
-            SQLiteManger.shared().createUserTable()
-            SQLiteManger.shared().createMediaTable()
+            SQLiteManger.shared().createDatabaseTables()
         }
     }
 }

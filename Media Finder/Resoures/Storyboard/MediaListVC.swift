@@ -179,7 +179,6 @@ extension MediaListVC {
     }
     private func setup(){
         UserDefultsManger.shared().isLogedIn = true
-        SQLiteManger.shared().createMediaTable()
         tableView.register(UINib(nibName: CustomCell.mediaCell, bundle: nil), forCellReuseIdentifier: CustomCell.mediaCell)
     }
     private func segmentedChangedAction(_ sender: UISegmentedControl){

@@ -29,8 +29,8 @@ class SQLiteManger {
     private let mediaHistoryData = Expression<Data>(SQL.mediaHistoryData)
     private let mediaTypeData = Expression<String>(SQL.mediaTypeData)
     
-    // MARK:- Methods
-    func setDatabaseTable(tableName: String){
+    // MARK:- Private Methods
+    private func setDatabaseTable(tableName: String){
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent(tableName).appendingPathExtension("sqlite3")
@@ -40,7 +40,7 @@ class SQLiteManger {
             print(error)
         }
     }
-    func createUserTable(){
+    private func createUserTable(){
         let createTable = self.usersTable.create { table in
             table.column(self.idData, primaryKey: true)
             table.column(self.userData)
@@ -51,7 +51,7 @@ class SQLiteManger {
             print(error)
         }
     }
-    func createMediaTable(){
+    private func createMediaTable(){
         let createTable = self.mediaTable.create { table in
             table.column(self.emailData, primaryKey: true)
             table.column(self.mediaHistoryData)
@@ -62,6 +62,16 @@ class SQLiteManger {
         } catch {
             print(error)
         }
+    }
+    
+    // MARK:- Public Methods
+    func setupDatabaseTables(){
+        setDatabaseTable(tableName: SQL.usersTable)
+        setDatabaseTable(tableName: SQL.mediaTable)
+    }
+    func createDatabaseTables(){
+        createUserTable()
+        createMediaTable()
     }
     func insertInUserTable(user: Data) {
         let insertUser = self.usersTable.insert(self.userData <- user)
