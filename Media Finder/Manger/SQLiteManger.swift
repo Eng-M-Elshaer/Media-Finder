@@ -99,12 +99,12 @@ class SQLiteManger {
     }
     func getMediaDataFromDB(email: String) -> (Data, String)? {
         do {
-            let medias = try self.database.prepare(self.mediaTable)
-            for media in medias {
+            let mediaData = try self.database.prepare(self.mediaTable)
+            for media in mediaData {
                 if email == media[self.emailData] {
                     let data = media[self.mediaHistoryData]
                     let type = media[self.mediaTypeData]
-                    return (data,type)
+                    return (data, type)
                 }
             }
         } catch {

@@ -122,13 +122,12 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		E21325212492820800493E53 /* Cell */ = {
+		E21325212492820800493E53 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E2132522249285EB00493E53 /* MediaCell.swift */,
-				E2132523249285EB00493E53 /* MediaCell.xib */,
+				E251B85727538044002CF3DF /* MediaCell */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E23762B5259A165900FF24FA /* Shared */ = {
@@ -145,6 +144,15 @@
 				E2132518249277E800493E53 /* APIManager.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		E251B85727538044002CF3DF /* MediaCell */ = {
+			isa = PBXGroup;
+			children = (
+				E2132522249285EB00493E53 /* MediaCell.swift */,
+				E2132523249285EB00493E53 /* MediaCell.xib */,
+			);
+			path = MediaCell;
 			sourceTree = "<group>";
 		};
 		E253ED952578277700537075 /* Assets */ = {
@@ -213,7 +221,7 @@
 		E2E045CB247BF846002644F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E21325212492820800493E53 /* Cell */,
+				E21325212492820800493E53 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
