@@ -11,5 +11,6 @@ target 'Media Finder' do
   pod 'Alamofire'
   pod 'SQLite.swift'
   pod 'SDWebImage'
+  pod 'MarqueeLabel'
 
 end

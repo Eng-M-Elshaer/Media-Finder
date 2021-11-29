@@ -6,7 +6,6 @@
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.
 //
 
-import UIKit
 import SDWebImage
 
 class MediaCell: UITableViewCell {
@@ -27,6 +26,16 @@ class MediaCell: UITableViewCell {
     // MARK:- Public Methods
     func configCell(type: MediaType, media: Media){
         setupCell(type: type, media: media)
+    }
+    
+    //MARK:- Actions
+    @IBAction func imageBtnTapped(_ sender: UIButton) {
+        let imageFrameX = artWorkImageView.frame.origin.x
+        self.artWorkImageView.frame.origin.x += 4
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, animations: {
+            self.artWorkImageView.frame.origin.x -= 8
+            self.artWorkImageView.frame.origin.x = imageFrameX
+        }, completion: nil)
     }
 }
 

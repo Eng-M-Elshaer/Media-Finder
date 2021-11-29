@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - IQKeyboardManagerSwift (6.5.4)
+  - MarqueeLabel (4.0.5)
   - SDWebImage (5.5.1):
     - SDWebImage/Core (= 5.5.1)
   - SDWebImage/Core (5.5.1)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - IQKeyboardManagerSwift
+  - MarqueeLabel
   - SDWebImage
   - SQLite.swift
 
@@ -18,15 +20,17 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - IQKeyboardManagerSwift
+    - MarqueeLabel
     - SDWebImage
     - SQLite.swift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
+  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   SDWebImage: 1245d058b7b8f59adef7a6da6bbafd4f1ab67041
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: 8d1fbfa72f53174c47838fcc6a78a43dd05a9e66
+PODFILE CHECKSUM: 3427ad3bb958a9148248ccaa9ab9b5b644fcb759
 
-COCOAPODS: 1.10.0.beta.2
+COCOAPODS: 1.10.1

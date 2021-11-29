@@ -21,10 +21,10 @@ class SignInVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         title = ViewControllerTitle.signIn
-        self.navigationItem.setHidesBackButton(true, animated:true)
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationItem.setHidesBackButton(false, animated:true)
+        self.navigationItem.setHidesBackButton(false, animated: true)
     }
     
     // MARK: - Actions.

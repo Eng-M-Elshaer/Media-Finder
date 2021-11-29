@@ -32,6 +32,14 @@ class MediaListVC: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         setupView()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        if let media = CoderManger.shared().encodMedia(media: mediaData) {
+            if self.mediaArr.count > 0 {
+                SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media,
+                                                         type: self.mediaType.rawValue)
+            }
+        }
+    }
     
     // MARK: - Actions.
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
@@ -65,9 +73,7 @@ extension MediaListVC: UITableViewDataSource {
 extension MediaListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let url = mediaArr[indexPath.row].previewUrl {
-            if let artworkUrl = mediaArr[indexPath.row].artworkUrl {
-                privewUrl(url: url, artworkUrl: artworkUrl)
-            }
+            privewUrl(url)
         }
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -80,7 +86,7 @@ extension MediaListVC: UITableViewDelegate {
     }
 }
 
-// MARK: - Search Bar.
+// MARK: - UISearchBarDelegate
 extension MediaListVC: UISearchBarDelegate {
     ///For get the data when the user just type
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -154,23 +160,14 @@ extension MediaListVC {
                 print(error.localizedDescription)
             } else if let mediaData = mediaData {
                 self.mediaArr = mediaData
-                if let media = CoderManger.shared().encodMedia(media: mediaData) {
-                    if self.mediaArr.count > 0 {
-                        SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media,
-                                                                 type: self.mediaType.rawValue)
-                    }
-                }
                 self.view.hideLoader()
                 self.tableView.reloadData()
             }
         }
     }
-    private func setImageForAVPlayer(cell:MediaCell) -> UIView {
-        return cell.artWorkImageView
-    }
-    private func privewUrl(url: String, artworkUrl: String){
-        let url = URL(string: url)
-        let player = AVPlayer(url: url!)
+    private func privewUrl(_ stringUrl: String){
+        guard let url = URL(string: stringUrl) else {return}
+        let player = AVPlayer(url: url)
         let vc = AVPlayerViewController()
         vc.player = player
         present(vc, animated: true) {
@@ -179,6 +176,9 @@ extension MediaListVC {
     }
     private func setup(){
         UserDefultsManger.shared().isLogedIn = true
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
         tableView.register(UINib(nibName: CustomCell.mediaCell, bundle: nil), forCellReuseIdentifier: CustomCell.mediaCell)
     }
     private func segmentedChangedAction(_ sender: UISegmentedControl){
