@@ -8,19 +8,19 @@
 
 import Foundation
 
-// MARK: - UserDefaultsKeys.
+// MARK:- UserDefaultsKeys.
 struct UserDefaultsKeys {
     static let isLogedIn = "UDKisLogedIn"
     static let email = "UDKemail"
     static let isOpenedBefore = "UDKisOpenedBefore"
 }
 
-// MARK: - Storyboard.
+// MARK:- Storyboard.
 struct StoryBoard {
     static var main = "Main"
 }
 
-// MARK: - ViewController.
+// MARK:- ViewController.
 struct ViewController {
     static let signUpVC = "SignUpVC"
     static let mapVC = "MapVC"
@@ -32,18 +32,18 @@ struct ViewController {
     static let mapScreenVC = "MapScreenVC"
 }
 
-// MARK: - URL.
+// MARK:- URL.
 struct Urls {
     static let base = "https://itunes.apple.com/search?"
 }
 
-// MARK: - Parameters Keys.
+// MARK:- Parameters Keys.
 struct ParameterKey {
     static let term = "term"
     static let media = "media"
 }
 
-// MARK: - SQL Keys.
+// MARK:- SQL Keys.
 struct SQL {
     static let usersTable = "users"
     static let mediaTable = "media"
@@ -54,24 +54,24 @@ struct SQL {
     static let mediaTypeData = "mediaTypeData"
 }
 
-// MARK: - Cells.
+// MARK:- Cells.
 struct CustomCell {
     static let mediaCell = "MediaCell"
 }
 
-// MARK: - Images.
+// MARK:- Images.
 struct Images {
     static let user = "user"
     static let placeholder = "placeholder.png"
 }
 
-// MARK: - AlertTitle.
+// MARK:- AlertTitle.
 struct AlertTitle {
     static let sorry = "Sorry"
     static let success = "Success"
 }
 
-// MARK: - AlertMessage.
+// MARK:- AlertMessage.
 struct AlertMessage {
     static let choosePhoto = "Please Choose Photo"
     static let enterEmail = "Please Enter Email"
@@ -87,9 +87,10 @@ struct AlertMessage {
     static let createdSuccessfully = "Your Account Has Been Created Successfully"
 }
 
-// MARK: - ViewControllerTitle.
+// MARK:- ViewControllerTitle.
 struct ViewControllerTitle {
     static let profile = "Profile"
     static let mediaList = "Media List"
     static let signIn = "Sign In"
+    static let signUp = "Sign Up"
 }

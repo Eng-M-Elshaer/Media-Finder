@@ -39,6 +39,7 @@ class MediaCell: UITableViewCell {
     }
 }
 
+//MARK:- Private Methods
 extension MediaCell {
     private func setupCell(type: MediaType, media: Media){
         setupImageView(mediaUrl: media.artworkUrl)

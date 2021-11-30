@@ -119,7 +119,7 @@ extension MediaListVC {
     }
     private func getMediaFromDB(){
         if let data = SQLiteManger.shared().getMediaDataFromDB(email: email)?.0 {
-            if let media = CoderManger.shared().decodMedia(userData: data){
+            if let media = CoderManger.shared().decodMedia(mediaData: data){
                 if let type = SQLiteManger.shared().getMediaDataFromDB(email: email)?.1 {
                     mediaArr = media
                     mediaKind = type

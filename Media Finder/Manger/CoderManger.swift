@@ -9,6 +9,7 @@
 import UIKit
 
 class CoderManger {
+    
     // MARK:- Singleton
     private static let sharedInstance = CoderManger()
     
@@ -39,8 +40,8 @@ class CoderManger {
         }
         return nil
     }
-    func decodMedia(userData: Data) -> [Media]? {
-        if let loadedMedia = try? decoder.decode([Media].self, from: userData) {
+    func decodMedia(mediaData: Data) -> [Media]? {
+        if let loadedMedia = try? decoder.decode([Media].self, from: mediaData) {
             return loadedMedia
         }
         return nil
