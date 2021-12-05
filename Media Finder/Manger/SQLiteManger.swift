@@ -61,7 +61,9 @@ class SQLiteManger {
     private func deleteMediaTable() {
         do {
             if try database.run(mediaTable.delete()) > 0 {
+                print("The Media Table Has Been Deleted.")
             } else {
+                print("Can not Delete the Media Table")
             }
         } catch {
             print(error)
