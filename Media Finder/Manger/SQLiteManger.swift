@@ -47,7 +47,7 @@ class SQLiteManger {
         }
     }
     func insertInMediaTable(email: String, mediaData: Data, type: String) {
-        deleteMediaTable()
+//        deleteMediaTable()
         let insertMedia = self.mediaTable.insert(self.emailData <- email,
                                                  self.mediaHistoryData <- mediaData,
                                                  self.mediaTypeData <- type

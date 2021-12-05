@@ -33,21 +33,11 @@ class MediaListVC: UIViewController {
         setupView()
     }
     override func viewWillDisappear(_ animated: Bool) {
-        if let media = CoderManger.shared().encodMedia(media: mediaData) {
-            if self.mediaArr.count > 0 {
-                SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media,
-                                                         type: self.mediaType.rawValue)
-            }
-        }
+        deCodeTheDataFromDB()
     }
     
     // MARK: - Actions.
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
-        guard let searchText = searchBar.text, searchText != "" else {
-            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterData)
-            setSegmanet()
-            return
-        }
         segmentedChangedAction(sender)
     }
 }
@@ -88,13 +78,6 @@ extension MediaListVC: UITableViewDelegate {
 
 // MARK: - UISearchBarDelegate
 extension MediaListVC: UISearchBarDelegate {
-    ///For get the data when the user just type
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.count >= 3 {
-//            bindData(term: searchText, media: mediaType.rawValue)
-//            tableView.reloadData()
-//        }
-//    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if searchBar.text?.count ?? 0 >= 3 {
@@ -103,6 +86,13 @@ extension MediaListVC: UISearchBarDelegate {
             self.showAlert(title: AlertTitle.sorry, message: AlertMessage.dataNeed)
         }
     }
+    ///For get the data when the user just type
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText.count >= 3 {
+//            bindData(term: searchText, media: mediaType.rawValue)
+//            tableView.reloadData()
+//        }
+//    }
 }
 
 // MARK: - Private Methods.
@@ -148,11 +138,6 @@ extension MediaListVC {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
     }
-    @objc private func goToProvileVC(){
-        let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
-        let profileVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.profileVC ) as! ProfileVC
-        self.navigationController?.pushViewController(profileVC, animated: true)
-    }
     private func bindData(term: String, media: String) {
         self.view.showLoader()
         APIManager.getDataFromAPI(term: term, media: media) { (error, mediaData) in
@@ -182,17 +167,40 @@ extension MediaListVC {
         tableView.register(UINib(nibName: CustomCell.mediaCell, bundle: nil), forCellReuseIdentifier: CustomCell.mediaCell)
     }
     private func segmentedChangedAction(_ sender: UISegmentedControl){
-        let index = sender.selectedSegmentIndex
-        switch index {
-        case 1:
-            self.mediaType = .tvShow
-        case 2:
-            self.mediaType = .music
-        case 3:
-            self.mediaType = .movie
-        default:
-            self.mediaType = .all
+        if validateSegmntedControl() {
+            let index = sender.selectedSegmentIndex
+            switch index {
+            case 1:
+                self.mediaType = .tvShow
+            case 2:
+                self.mediaType = .music
+            case 3:
+                self.mediaType = .movie
+            default:
+                self.mediaType = .all
+            }
+            bindData(term: searchBar.text!, media: mediaType.rawValue)
         }
-        bindData(term: searchBar.text!, media: mediaType.rawValue)
+    }
+    private func deCodeTheDataFromDB(){
+        if let media = CoderManger.shared().encodMedia(media: mediaArr) {
+            if self.mediaArr.count > 0 {
+                SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media,
+                                                         type: self.mediaType.rawValue)
+            }
+        }
+    }
+    private func validateSegmntedControl() -> Bool {
+        guard let searchText = searchBar.text, searchText != "" else {
+            self.showAlert(title: AlertTitle.sorry, message: AlertMessage.enterData)
+            setSegmanet()
+            return false
+        }
+        return true
+    }
+    @objc private func goToProvileVC(){
+        let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
+        let profileVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.profileVC ) as! ProfileVC
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
 }
