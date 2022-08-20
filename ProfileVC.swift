@@ -60,6 +60,7 @@ extension ProfileVC {
         userAddressTwoLabel.text = user?.addressTwo
         userAddressThreeLabel.text = user?.addressThree
     }
+    //Alternative Way.
     private func goToSignInVC(){
         let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
         let signInVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.signInVC ) as! SignInVC
@@ -68,8 +69,7 @@ extension ProfileVC {
     }
     private func logOut(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
-        appDelegate.swithToAuthState(mainStoryboard)
+        appDelegate.swithToAuthState()
     }
     private func setup(){
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLogedIn)

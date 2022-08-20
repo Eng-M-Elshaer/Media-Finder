@@ -10,7 +10,7 @@ import Alamofire
 
 class APIManager {
     
-    //MAKR:- Get Data From API
+    //MARK:- Get Data From API
     class func getDataFromAPI(term: String, media: String, completion: @escaping (_ error: Error?, _ mediaArray: [Media]?) -> Void) {
         
         let params = [ParameterKey.term: term, ParameterKey.media: media]

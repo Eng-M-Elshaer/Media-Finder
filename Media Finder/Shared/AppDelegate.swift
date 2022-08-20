@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     //MARK:- Propreties
     var window: UIWindow?
+    private let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
     
     //MARK:- AppDelegate Methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -24,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK:- Public Methods
-    public func swithToAuthState(_ mainStoryboard: UIStoryboard){
+    public func swithToAuthState(){
         let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.signInVC) as! SignInVC
         let navigationController = UINavigationController(rootViewController: rootVC)
         setNavbar(navigationController: navigationController)
@@ -42,7 +43,7 @@ extension AppDelegate {
         navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController.navigationBar.tintColor = .white
     }
-    private func swithToMainState(_ mainStoryboard: UIStoryboard){
+    private func swithToMainState(){
         let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.mediaListVC) as! MediaListVC
         let navigationController = UINavigationController(rootViewController: rootVC)
         setNavbar(navigationController: navigationController)
@@ -51,12 +52,11 @@ extension AppDelegate {
     private func setRootView(){
         let userData = UserDefaults.standard.object(forKey: UserDefaultsKeys.isLogedIn)
         let isLoged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogedIn)
-        let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
         if userData != nil {
             if isLoged {
-               swithToMainState(mainStoryboard)
+               swithToMainState()
             } else {
-               swithToAuthState(mainStoryboard)
+               swithToAuthState()
             }
         }
     }
