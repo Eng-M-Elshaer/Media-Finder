@@ -915,8 +915,8 @@
                                     <action selector="submitBtnTapped:" destination="p1e-t7-IeR" eventType="touchUpInside" id="fSB-zc-RS6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0h3-dr-z8z">
-                                <rect key="frame" x="20" y="84" width="374" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0h3-dr-z8z">
+                                <rect key="frame" x="20" y="84" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1034,8 +1034,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <gestureRecognizers/>
                             </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g5n-ka-AnC">
+                                <rect key="frame" x="187" y="405" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="g0t-fE-e7q"/>
+                                    <constraint firstAttribute="height" constant="40" id="sDL-UC-1lG"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gh-Gk-EfS">
-                                <rect key="frame" x="20" y="820" width="374" height="36"/>
+                                <rect key="frame" x="20" y="786" width="374" height="36"/>
                                 <color key="backgroundColor" red="0.76067807330000003" green="0.49789310279999999" blue="0.79895701139999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Submit">
@@ -1050,9 +1057,8 @@
                                     <action selector="addressSubmitBtnTapped:" destination="Jlu-ue-GxQ" eventType="touchUpInside" id="WBB-Et-NBo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLo-gE-t5h">
-                                <rect key="frame" x="20" y="40" width="394" height="0.0"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLo-gE-t5h">
+                                <rect key="frame" x="20" y="84" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1062,14 +1068,16 @@
                         <color key="backgroundColor" red="0.76067807330000003" green="0.49789310279999999" blue="0.79895701139999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qbX-Nc-zeB" firstAttribute="top" secondItem="WNY-ar-xDo" secondAttribute="top" id="1mV-if-grf"/>
-                            <constraint firstItem="8gh-Gk-EfS" firstAttribute="bottom" secondItem="qbX-Nc-zeB" secondAttribute="bottom" constant="-40" id="HCB-yB-eJ9"/>
-                            <constraint firstItem="uLo-gE-t5h" firstAttribute="leading" secondItem="qbX-Nc-zeB" secondAttribute="leading" constant="20" id="MHU-2h-aKV"/>
-                            <constraint firstItem="uLo-gE-t5h" firstAttribute="top" secondItem="qbX-Nc-zeB" secondAttribute="top" constant="40" id="MeF-4U-b0b"/>
-                            <constraint firstItem="uLo-gE-t5h" firstAttribute="trailing" secondItem="qbX-Nc-zeB" secondAttribute="trailing" id="PCc-kM-N9Z"/>
-                            <constraint firstItem="8gh-Gk-EfS" firstAttribute="leading" secondItem="uLo-gE-t5h" secondAttribute="leading" id="aOz-Yz-upc"/>
+                            <constraint firstItem="uLo-gE-t5h" firstAttribute="top" secondItem="6Pj-TA-dHJ" secondAttribute="top" constant="40" id="Bmr-KD-n9B"/>
+                            <constraint firstItem="6Pj-TA-dHJ" firstAttribute="trailing" secondItem="uLo-gE-t5h" secondAttribute="trailing" constant="20" id="Kum-fo-jKH"/>
+                            <constraint firstItem="uLo-gE-t5h" firstAttribute="leading" secondItem="6Pj-TA-dHJ" secondAttribute="leading" constant="20" id="VDC-eQ-3cC"/>
+                            <constraint firstItem="6Pj-TA-dHJ" firstAttribute="bottom" secondItem="8gh-Gk-EfS" secondAttribute="bottom" constant="40" id="WhE-qs-gbt"/>
                             <constraint firstItem="qbX-Nc-zeB" firstAttribute="trailing" secondItem="6Pj-TA-dHJ" secondAttribute="trailing" id="dcE-p3-UWw"/>
-                            <constraint firstItem="8gh-Gk-EfS" firstAttribute="trailing" secondItem="uLo-gE-t5h" secondAttribute="trailing" constant="-20" id="o0t-aC-Hk1"/>
+                            <constraint firstItem="g5n-ka-AnC" firstAttribute="centerX" secondItem="qbX-Nc-zeB" secondAttribute="centerX" id="ohF-Bu-l4M"/>
                             <constraint firstItem="qbX-Nc-zeB" firstAttribute="bottom" secondItem="WNY-ar-xDo" secondAttribute="bottom" id="oy5-VY-Fg6"/>
+                            <constraint firstItem="8gh-Gk-EfS" firstAttribute="leading" secondItem="uLo-gE-t5h" secondAttribute="leading" id="r23-dK-GPq"/>
+                            <constraint firstItem="g5n-ka-AnC" firstAttribute="centerY" secondItem="qbX-Nc-zeB" secondAttribute="centerY" multiplier="0.95" id="ud2-EA-1u1"/>
+                            <constraint firstItem="8gh-Gk-EfS" firstAttribute="trailing" secondItem="uLo-gE-t5h" secondAttribute="trailing" id="voO-PK-zE8"/>
                             <constraint firstItem="qbX-Nc-zeB" firstAttribute="leading" secondItem="6Pj-TA-dHJ" secondAttribute="leading" id="x3g-9W-9wl"/>
                         </constraints>
                     </view>
@@ -1085,7 +1093,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4993" y="-8"/>
+            <point key="canvasLocation" x="4992.753623188406" y="-8.0357142857142847"/>
         </scene>
     </scenes>
     <resources>

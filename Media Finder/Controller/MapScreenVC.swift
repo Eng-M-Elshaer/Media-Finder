@@ -31,12 +31,28 @@ class MapScreenVC: UIViewController {
         checkLocationServices()
         mapView.delegate = self
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
     //MARK:- Actions
     @IBAction func addressSubmitBtnTapped(_ sender: UIButton) {
         let address = userLocationLabel.text ?? ""
         delegate?.setDelailLocationInAddress(delailsAddress: address, tag: tag)
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK:- MKMapViewDelegate
+extension MapScreenVC: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let lat = mapView.centerCoordinate.latitude
+        let long = mapView.centerCoordinate.longitude
+        let location = CLLocation(latitude: lat, longitude: long)
+        self.setAddressFrom(location: location)
     }
 }
 
@@ -59,7 +75,7 @@ extension MapScreenVC {
         if CLLocationManager.locationServicesEnabled() {
             checkLocationAuthorisation()
         } else {
-            print("can not get your location!")
+            print("Can Not Get Your Location!")
         }
     }
     private func checkLocationAuthorisation() {
@@ -67,32 +83,22 @@ extension MapScreenVC {
         case .authorizedAlways, .authorizedWhenInUse:
             centerMapOnSpecificLocation()
         case .restricted, .denied:
-            print("can not get your location!")
+            print("Can Not Get Your Location!")
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         default:
-            print("can not get your location!")
+            print("Can Not Get Your Location!")
         }
     }
     private func setAddressFrom(location: CLLocation) {
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) { (placeMarks, erorr) in
             if let erorr = erorr {
-                print("erorr is \(erorr.localizedDescription)")
+                print("Erorr is \(erorr.localizedDescription)")
             }else if let firstPlaceMarks = placeMarks?.first {
                 let detailsAddress = firstPlaceMarks.compactAddress
                 self.userLocationLabel.text = detailsAddress
             }
         }
-    }
-}
-
-//MARK:- MKMapViewDelegate
-extension MapScreenVC: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let lat = mapView.centerCoordinate.latitude
-        let long = mapView.centerCoordinate.longitude
-        let location = CLLocation(latitude: lat, longitude: long)
-        self.setAddressFrom(location: location)
     }
 }

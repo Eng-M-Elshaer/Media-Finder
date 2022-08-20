@@ -6,7 +6,6 @@
 //  Copyright © 2020 Mohamed Elshaer. All rights reserved.
 //
 
-import UIKit
 import AVKit
 
 class MediaListVC: UIViewController {
@@ -66,7 +65,7 @@ extension MediaListVC: UITableViewDelegate {
             privewUrl(url)
         }
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
         let theCell = cell as! MediaCell
         let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
         theCell.artWorkImageView.layer.transform = rotationTransform
@@ -99,7 +98,7 @@ extension MediaListVC: UISearchBarDelegate {
 extension MediaListVC {
     private func setupView(){
         setNavView()
-        setTableRowHight()
+//        setTableRowHight()
         getMediaFromDB()
         setSegmanet()
     }

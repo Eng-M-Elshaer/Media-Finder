@@ -40,8 +40,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>need it</string>
+	<string>Need to access the user location to get the address.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>need it 2</string>
+	<string>Need to access the user location to get the address.</string>
 </dict>
 </plist>

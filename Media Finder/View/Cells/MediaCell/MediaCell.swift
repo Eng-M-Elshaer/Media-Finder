@@ -63,6 +63,9 @@ extension MediaCell {
             if media.longDescription == nil {
                 titleLabel.text = media.trackName
                 detailsLabel.text = media.artistName
+            } else if media.artistName == nil {
+                titleLabel.text = media.trackName
+                detailsLabel.text = media.artistName
             } else {
                 titleLabel.text = media.artistName
                 detailsLabel.text = media.longDescription

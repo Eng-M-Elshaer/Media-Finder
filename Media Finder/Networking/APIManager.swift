@@ -16,6 +16,7 @@ class APIManager {
         let params = [ParameterKey.term: term, ParameterKey.media: media]
         
         Alamofire.request(Urls.base, method: HTTPMethod.get, parameters: params, encoding: URLEncoding.default, headers: nil).response { response in
+            
             guard response.error == nil else {
                 print(response.error!)
                 completion(response.error, nil)

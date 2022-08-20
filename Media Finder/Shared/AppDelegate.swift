@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK:- Public Methods
-    func swithToAuthState(_ mainStoryboard: UIStoryboard){
+    public func swithToAuthState(_ mainStoryboard: UIStoryboard){
         let rootVC = mainStoryboard.instantiateViewController(withIdentifier: ViewController.signInVC) as! SignInVC
         let navigationController = UINavigationController(rootViewController: rootVC)
         setNavbar(navigationController: navigationController)

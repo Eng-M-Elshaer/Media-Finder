@@ -67,9 +67,7 @@ extension ProfileVC {
         self.navigationController?.popViewController(animated: true)
     }
     private func logOut(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let mainStoryboard = UIStoryboard(name: StoryBoard.main, bundle: nil)
         appDelegate.swithToAuthState(mainStoryboard)
     }

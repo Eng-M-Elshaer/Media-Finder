@@ -145,7 +145,7 @@ extension SignUpVC {
     }
     private func addressTapped(_ sender: UIButton){
         let mainStoryBoard = UIStoryboard(name: StoryBoard.main, bundle: nil)
-        let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapWithCurrentLocationVC) as! MapWithCurrentLocationVC
+        let mapVC = mainStoryBoard.instantiateViewController(withIdentifier: ViewController.mapScreenVC) as! MapScreenVC
         mapVC.delegate = self
         mapVC.tag = sender.tag
         self.navigationController?.pushViewController(mapVC, animated: true)
@@ -180,12 +180,16 @@ extension SignUpVC {
 }
 
 // MARK: - MapCenterDelegate Extension.
-extension SignUpVC: MapWithCurrentLocationDelegate {
+extension SignUpVC: MapScreenVCDelegate {
     func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
         setDelailLocation(delailsAddress: delailsAddress, tag: tag)
     }
 }
-
+//extension SignUpVC: MapWithCurrentLocationDelegate {
+//    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
+//        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
+//    }
+//}
 //extension SignUpVC: MapDelegate {
 //    func setDelailLocationInAddress(delailsAddress: String, tag: Int) {
 //        setDelailLocation(delailsAddress: delailsAddress, tag: tag)
