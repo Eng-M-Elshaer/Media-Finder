@@ -23,7 +23,7 @@ class APIManager {
                 return
             }
             guard let data = response.data else {
-                print("didn't get any data from API")
+                print("Didn't Get Any Data From The API")
                 return
             }
             do {
