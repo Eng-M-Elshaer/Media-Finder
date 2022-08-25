@@ -115,6 +115,8 @@ extension MediaListVC {
                     tableView.reloadData()
                 }
             }
+        } else {
+            self.noDataImageView.image = UIImage(named: Images.noRecord)
         }
     }
     private func setSegmanet() {
