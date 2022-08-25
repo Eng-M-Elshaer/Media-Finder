@@ -6,7 +6,6 @@
 //  Copyright © 2021 Mohamed Elshaer. All rights reserved.
 //
 
-import UIKit
 import MapKit
 
 // MARK: - MapCenterDelegate Protocol.

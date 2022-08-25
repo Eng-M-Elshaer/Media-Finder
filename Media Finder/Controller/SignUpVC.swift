@@ -52,7 +52,7 @@ class SignUpVC: UITableViewController {
 
 // MARK: - Image Picker Extension.
 extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             userImageView.contentMode = .scaleAspectFit
             userImageView.image = pickedImage
@@ -136,9 +136,11 @@ extension SignUpVC {
             if isValidRegax() {
                 if let user = CoderManger.shared().encodUser(user: getUser()) {
                     SQLiteManger.shared().insertInUserTable(user: user)
-                }
-                self.showSuccessAlert(title: AlertTitle.success, message: AlertMessage.createdSuccessfully) { _ in
-                    self.goToSignInVC()
+                    self.showSuccessAlert(title: AlertTitle.success, message: AlertMessage.createdSuccessfully) { _ in
+                        self.goToSignInVC()
+                    }
+                } else {
+                    self.showAlert(title: AlertTitle.sorry, message: "Error With SQL Database.")
                 }
             }
         }
