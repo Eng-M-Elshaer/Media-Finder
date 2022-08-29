@@ -63,7 +63,7 @@ struct CustomCell {
 struct Images {
     static let user = "user"
     static let placeholder = "placeholder.png"
-    static let noRecord = "Search.jpeg"
+    static let noRecord = "Search.png"
 }
 
 // MARK:- AlertTitle.

@@ -186,8 +186,10 @@ extension MediaListVC {
     private func deCodeTheDataFromDB(){
         if let media = CoderManger.shared().encodMedia(media: mediaArr) {
             if self.mediaArr.count > 0 {
-                SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media,
-                                                         type: self.mediaType.rawValue)
+                SQLiteManger.shared().updateUserMedia(with: self.email, userMediaData: media,
+                                                      type: self.mediaType.rawValue)
+            } else {
+                SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media, type: self.mediaType.rawValue)
             }
         }
     }

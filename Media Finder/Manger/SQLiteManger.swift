@@ -46,25 +46,28 @@ class SQLiteManger {
             print(error)
         }
     }
+    func updateUserMedia(with userEmail: String, userMediaData: Data, type: String){
+        do {
+            let mediaData = try self.database.prepare(self.mediaTable)
+            for data in mediaData {
+                let email = data[self.emailData]
+                if userEmail == email {
+                    let media = self.mediaTable.filter(self.emailData == email)
+                    let updateMediaData = media.update(self.mediaHistoryData <- userMediaData, self.mediaTypeData <- type)
+                    try self.database.run(updateMediaData)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
     func insertInMediaTable(email: String, mediaData: Data, type: String) {
-//        deleteMediaTable()
         let insertMedia = self.mediaTable.insert(self.emailData <- email,
                                                  self.mediaHistoryData <- mediaData,
                                                  self.mediaTypeData <- type
         )
         do {
             try self.database.run(insertMedia)
-        } catch {
-            print(error)
-        }
-    }
-    private func deleteMediaTable() {
-        do {
-            if try database.run(mediaTable.delete()) > 0 {
-                print("The Media Table Has Been Deleted.")
-            } else {
-                print("Can not Delete the Media Table")
-            }
         } catch {
             print(error)
         }
@@ -147,6 +150,17 @@ extension SQLiteManger {
         }
         do {
             try self.database.run(createTable)
+        } catch {
+            print(error)
+        }
+    }
+    private func deleteMediaTable() {
+        do {
+            if try database.run(mediaTable.delete()) > 0 {
+                print("The Media Table Has Been Deleted.")
+            } else {
+                print("Can not Delete the Media Table")
+            }
         } catch {
             print(error)
         }
