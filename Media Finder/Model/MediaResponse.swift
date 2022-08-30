@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK:- MediaType
-enum MediaType: String {
+enum MediaType: String, Codable{
     case movie = "movie"
     case music = "music"
     case tvShow = "tvShow"
@@ -20,4 +20,9 @@ enum MediaType: String {
 struct MediaResponse: Codable {
     var resultCount: Int!
     var results: [Media]!
+}
+
+struct MediaData: Codable {
+    var type: MediaType!
+    var data: [Media]!
 }

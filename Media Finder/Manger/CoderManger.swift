@@ -34,16 +34,28 @@ class CoderManger {
         }
         return nil
     }
-    func encodMedia(media: [Media]) -> Data? {
-        if let encoded = try? encoder.encode(media) {
+    func encodMediaListData(mediaData: MediaData) -> Data? {
+        if let encoded = try? encoder.encode(mediaData) {
             return encoded
         }
         return nil
     }
-    func decodMedia(mediaData: Data) -> [Media]? {
-        if let loadedMedia = try? decoder.decode([Media].self, from: mediaData) {
+    func decodMediaListData(mediaListData: Data) -> MediaData? {
+        if let loadedMedia = try? decoder.decode(MediaData.self, from: mediaListData) {
             return loadedMedia
         }
         return nil
     }
+//    func encodMedia(media: [Media]) -> Data? {
+//        if let encoded = try? encoder.encode(media) {
+//            return encoded
+//        }
+//        return nil
+//    }
+//    func decodMedia(mediaData: Data) -> [Media]? {
+//        if let loadedMedia = try? decoder.decode([Media].self, from: mediaData) {
+//            return loadedMedia
+//        }
+//        return nil
+//    }
 }

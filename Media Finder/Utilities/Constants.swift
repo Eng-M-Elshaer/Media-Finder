@@ -46,12 +46,12 @@ struct ParameterKey {
 // MARK:- SQL Keys.
 struct SQL {
     static let usersTable = "users"
-    static let mediaTable = "media"
     static let idData = "id"
     static let userData = "userData"
-    static let emailData = "email"
-    static let mediaHistoryData = "mediaHistory"
-    static let mediaTypeData = "mediaTypeData"
+    static let mediaListData = "mediaListData"
+//    static let mediaTable = "media"
+//    static let emailData = "email"
+//    static let mediaTypeData = "mediaTypeData"
 }
 
 // MARK:- Cells.

@@ -107,13 +107,11 @@ extension MediaListVC {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: ViewControllerTitle.profile, style: .plain, target: self, action: #selector(goToProvileVC))
     }
     private func getMediaFromDB(){
-        if let data = SQLiteManger.shared().getMediaDataFromDB(email: email)?.0 {
-            if let media = CoderManger.shared().decodMedia(mediaData: data){
-                if let type = SQLiteManger.shared().getMediaDataFromDB(email: email)?.1 {
-                    mediaArr = media
-                    mediaKind = type
-                    tableView.reloadData()
-                }
+        if let data = SQLiteManger.shared().getMediaDataFromDB(email: email) {
+            if let media = CoderManger.shared().decodMediaListData(mediaListData: data){
+                mediaArr = media.data
+                mediaKind = media.type.rawValue
+                tableView.reloadData()
             }
         } else {
             self.noDataImageView.image = UIImage(named: Images.noRecord)
@@ -184,13 +182,10 @@ extension MediaListVC {
         }
     }
     private func deCodeTheDataFromDB(){
-        if let media = CoderManger.shared().encodMedia(media: mediaArr) {
-            if self.mediaArr.count > 0 {
-                SQLiteManger.shared().updateUserMedia(with: self.email, userMediaData: media,
-                                                      type: self.mediaType.rawValue)
-            } else {
-                SQLiteManger.shared().insertInMediaTable(email: self.email, mediaData: media, type: self.mediaType.rawValue)
-            }
+        let mediaData = MediaData(type: self.mediaType, data: self.mediaArr)
+        if let userListData = CoderManger.shared().encodMediaListData(mediaData: mediaData) {
+            let data = EnteredMediaData(self.email, userListData)
+            SQLiteManger.shared().updateUserMediaListData(with: data)
         }
     }
     private func validateSegmntedControl() -> Bool {
