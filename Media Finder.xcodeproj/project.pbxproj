@@ -11,7 +11,6 @@
 		E2132510249274C000493E53 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213250F249274C000493E53 /* Constants.swift */; };
 		E21325132492751500493E53 /* CLPlacemark+CompactAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21325122492751500493E53 /* CLPlacemark+CompactAddress.swift */; };
 		E21325152492773500493E53 /* MediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21325142492773500493E53 /* MediaResponse.swift */; };
-		E21325172492774800493E53 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21325162492774800493E53 /* Media.swift */; };
 		E2132519249277E800493E53 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2132518249277E800493E53 /* APIManager.swift */; };
 		E2132524249285EB00493E53 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2132522249285EB00493E53 /* MediaCell.swift */; };
 		E2132525249285EB00493E53 /* MediaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2132523249285EB00493E53 /* MediaCell.xib */; };
@@ -44,7 +43,6 @@
 		E213250F249274C000493E53 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E21325122492751500493E53 /* CLPlacemark+CompactAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLPlacemark+CompactAddress.swift"; sourceTree = "<group>"; };
 		E21325142492773500493E53 /* MediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaResponse.swift; sourceTree = "<group>"; };
-		E21325162492774800493E53 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		E2132518249277E800493E53 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E2132522249285EB00493E53 /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		E2132523249285EB00493E53 /* MediaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCell.xib; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 			children = (
 				E2E045CD247BF877002644F4 /* User.swift */,
 				E21325142492773500493E53 /* MediaResponse.swift */,
-				E21325162492774800493E53 /* Media.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,7 +288,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Mohamed Elshaer";
 				TargetAttributes = {
 					E2E045B5247BF80B002644F4 = {
@@ -383,7 +380,6 @@
 				E28C457525B0D05300E92392 /* UIView+Loader.swift in Sources */,
 				E29590792497B81300F1D0D6 /* CoderManger.swift in Sources */,
 				E21325152492773500493E53 /* MediaResponse.swift in Sources */,
-				E21325172492774800493E53 /* Media.swift in Sources */,
 				E2F0FF072722E070006F25D0 /* MapScreenVC.swift in Sources */,
 				E251B84F27480B07002CF3DF /* Validtor.swift in Sources */,
 				E253ED93257826AE00537075 /* MediaListVC.swift in Sources */,
@@ -431,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -453,6 +450,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -492,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -514,6 +513,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -135,7 +135,7 @@ extension SignUpVC {
         if isVaildData() {
             if isValidRegax() {
                 if let user = CoderManger.shared().encodUser(user: getUser()) {
-                    SQLiteManger.shared().insertInUserTable(user: user)
+                    SQLiteManger.shared().insertInUserData(user: user)
                     self.showSuccessAlert(title: AlertTitle.success, message: AlertMessage.createdSuccessfully) { _ in
                         self.goToSignInVC()
                     }

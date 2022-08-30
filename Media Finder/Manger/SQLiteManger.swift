@@ -42,7 +42,7 @@ class SQLiteManger {
         createUserTable()
 //        createMediaTable()
     }
-    func insertInUserTable(user: Data) {
+    func insertInUserData(user: Data) {
         let insertUser = self.usersTable.insert(self.userData <- user)
         do {
             try self.database.run(insertUser)
@@ -65,21 +65,6 @@ class SQLiteManger {
         } catch {
             print(error)
         }
-    }
-    func getUsersFromDB() -> [Data]? {
-        var usersData = [Data]()
-        usersData.removeAll()
-        do {
-            let users = try self.database.prepare(self.usersTable)
-            for user in users {
-                let data = user[self.userData]
-                usersData.append(contentsOf: [data])
-            }
-            return usersData
-        } catch {
-            print(error)
-        }
-        return nil
     }
     func getUserFromDB(email: String) -> User? {
         do {
@@ -141,68 +126,83 @@ extension SQLiteManger {
 
 //MARK:- Methods For Scecond Table
 extension SQLiteManger {
-    //    func getMediaDataFromDB(email: String) -> (Data, String)? {
-    //        do {
-    //            let mediaData = try self.database.prepare(self.mediaTable)
-    //            for media in mediaData {
-    //                if email == media[self.emailData] {
-    //                    let data = media[self.mediaHistoryData]
-    //                    let type = media[self.mediaTypeData]
-    //                    return (data, type)
-    //                }
-    //            }
-    //        } catch {
-    //            print(error)
-    //        }
-    //        return nil
-    //    }
-    //    func insertInMediaTable(with userData: EnteredMediaData) {
-    //        let insertMedia = self.mediaTable.insert(self.emailData <- userData.email,
-    //                                                 self.mediaHistoryData <- userData.mediaData,
-    //                                                 self.mediaTypeData <- userData.mediaType
-    //        )
-    //        do {
-    //            try self.database.run(insertMedia)
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
-    //    func updateUserMedia(with userData: EnteredMediaData){
-    //        do {
-    //            let mediaData = try self.database.prepare(self.mediaTable)
-    //            for data in mediaData {
-    //                let email = data[self.emailData]
-    //                if userData.email == email {
-    //                    let media = self.mediaTable.filter(self.emailData == userData.email)
-    //                    let updateMediaData = media.update(self.mediaHistoryData <- userData.mediaData, self.mediaTypeData <- userData.mediaType)
-    //                    try self.database.run(updateMediaData)
-    //                }
-    //            }
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
-    //    private func createMediaTable(){
-    //        let createTable = self.mediaTable.create { table in
-    //            table.column(self.emailData, primaryKey: true)
-    //            table.column(self.mediaHistoryData)
-    //            table.column(self.mediaTypeData)
-    //        }
-    //        do {
-    //            try self.database.run(createTable)
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
-    //    private func deleteMediaTable() {
-    //        do {
-    //            if try database.run(mediaTable.delete()) > 0 {
-    //                print("The Media Table Has Been Deleted.")
-    //            } else {
-    //                print("Can not Delete the Media Table")
-    //            }
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
+//    func getMediaDataFromDB(email: String) -> (Data, String)? {
+//        do {
+//            let mediaData = try self.database.prepare(self.mediaTable)
+//            for media in mediaData {
+//                if email == media[self.emailData] {
+//                    let data = media[self.mediaHistoryData]
+//                    let type = media[self.mediaTypeData]
+//                    return (data, type)
+//                }
+//            }
+//        } catch {
+//            print(error)
+//        }
+//        return nil
+//    }
+//    func insertInMediaTable(with userData: EnteredMediaData) {
+//        let insertMedia = self.mediaTable.insert(self.emailData <- userData.email,
+//                                                 self.mediaHistoryData <- userData.mediaData,
+//                                                 self.mediaTypeData <- userData.mediaType
+//        )
+//        do {
+//            try self.database.run(insertMedia)
+//        } catch {
+//            print(error)
+//        }
+//    }
+//    func updateUserMedia(with userData: EnteredMediaData){
+//        do {
+//            let mediaData = try self.database.prepare(self.mediaTable)
+//            for data in mediaData {
+//                let email = data[self.emailData]
+//                if userData.email == email {
+//                    let media = self.mediaTable.filter(self.emailData == userData.email)
+//                    let updateMediaData = media.update(self.mediaHistoryData <- userData.mediaData,self.mediaTypeData <- userData.mediaType)
+//                    try self.database.run(updateMediaData)
+//                }
+//            }
+//        } catch {
+//            print(error)
+//        }
+//    }
+//    private func createMediaTable(){
+//        let createTable = self.mediaTable.create { table in
+//            table.column(self.emailData, primaryKey: true)
+//            table.column(self.mediaHistoryData)
+//            table.column(self.mediaTypeData)
+//        }
+//        do {
+//            try self.database.run(createTable)
+//        } catch {
+//            print(error)
+//        }
+//    }
+//    private func deleteMediaTable() {
+//        do {
+//            if try database.run(mediaTable.delete()) > 0 {
+//                print("The Media Table Has Been Deleted.")
+//            } else {
+//                print("Can not Delete the Media Table")
+//            }
+//        } catch {
+//            print(error)
+//        }
+//    }
+//    func getUsersFromDB() -> [Data]? {
+//        var usersData = [Data]()
+//        usersData.removeAll()
+//        do {
+//            let users = try self.database.prepare(self.usersTable)
+//            for user in users {
+//                let data = user[self.userData]
+//                usersData.append(contentsOf: [data])
+//            }
+//            return usersData
+//        } catch {
+//            print(error)
+//        }
+//        return nil
+//    }
 }
