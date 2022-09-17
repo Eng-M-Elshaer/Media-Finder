@@ -125,7 +125,7 @@ extension SQLiteManger {
 }
 
 //MARK:- Methods For Scecond Table
-extension SQLiteManger {
+//extension SQLiteManger {
 //    func getMediaDataFromDB(email: String) -> (Data, String)? {
 //        do {
 //            let mediaData = try self.database.prepare(self.mediaTable)
@@ -205,4 +205,4 @@ extension SQLiteManger {
 //        }
 //        return nil
 //    }
-}
+//}
