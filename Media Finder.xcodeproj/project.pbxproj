@@ -175,6 +175,7 @@
 		E2B29FCD248D455800F4619E /* Resoures */ = {
 			isa = PBXGroup;
 			children = (
+				E2E045C5247BF80D002644F4 /* Info.plist */,
 				E213251A2492798600493E53 /* Storyboard */,
 				E253ED952578277700537075 /* Assets */,
 			);
@@ -202,7 +203,6 @@
 		E2E045B8247BF80B002644F4 /* Media Finder */ = {
 			isa = PBXGroup;
 			children = (
-				E2E045C5247BF80D002644F4 /* Info.plist */,
 				E23762B5259A165900FF24FA /* Shared */,
 				E251B850274AC54B002CF3DF /* Networking */,
 				E2B29FCC248D454700F4619E /* Manger */,

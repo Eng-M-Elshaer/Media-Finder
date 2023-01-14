@@ -53,8 +53,7 @@ class SignUpVC: UITableViewController {
 // MARK: - Image Picker Extension.
 extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            userImageView.contentMode = .scaleAspectFit
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             userImageView.image = pickedImage
         }
         dismiss(animated: true, completion: nil)
