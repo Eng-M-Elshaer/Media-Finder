@@ -22,6 +22,7 @@ class APIManager {
                 completion(response.error, nil)
                 return
             }
+            //EXTRA.
             guard let data = response.data else {
                 print("Didn't Get Any Data From The API")
                 return
