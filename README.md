@@ -1,5 +1,5 @@
 # Media Finder
-Simple App like iTunes bu using the iTunes API to get media tvShow, Music or Movie 
+Simple App like iTunes by using the iTunes API to get media tvShow, Music or Movie 
 
 
 ## Usage
