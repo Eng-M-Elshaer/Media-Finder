@@ -1,0 +1,40 @@
+workflows:
+  ios-simulator-build:
+    name: iOS Simulator Build
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      xcode: latest
+      cocoapods: default
+      vars:
+        XCODE_WORKSPACE: "Media Finder.xcworkspace"
+        XCODE_SCHEME: "Media Finder"
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: "*"
+          include: true
+      cancel_previous_builds: true
+    scripts:
+      - name: Install CocoaPods dependencies
+        script: |
+          pod install
+
+      - name: Build app for iOS Simulator (no signing)
+        script: |
+          set -euo pipefail
+
+          xcodebuild \
+            -workspace "$XCODE_WORKSPACE" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -derivedDataPath build/DerivedData \
+            clean build | tee xcodebuild.log
+
+    artifacts:
+      - xcodebuild.log
+      - build/DerivedData/Build/Products/**/*.app
